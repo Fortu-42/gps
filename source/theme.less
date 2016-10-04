@@ -1,0 +1,163 @@
+// CSS Reset
+@import "mymixins.less";
+@import "variables.less";
+@import "bootstrap/variables.less";
+@import 'https://fonts.googleapis.com/css?family=Raleway';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
+
+body{
+  #gradient1.directional1(rgba(0,0,0,0.3); rgba(0,0,0,0.4); 45deg);
+  //overflow-x: hidden
+}
+
+.jumbo{
+  padding-top: 100px;
+  padding-bottom: 15px;
+}
+
+.main-text{
+  .make-col-md-6();
+  color: white;
+  font-weight: 300;
+}
+
+a.nav-link{
+  text-decoration: none;
+  color: @white;
+}
+a.nav-link:hover{
+  text-decoration: none;
+  color: @gray-light;
+}
+a.nav-link:visited{
+  text-decoration: none;
+  color: @gray-light;
+}
+
+.logo, .search{
+  float:left;
+  margin:0;
+}
+
+.main-title{
+  @media(min-width: @screen-desktop){
+    margin-top: 14px;
+    margin-left: -22px;
+    position: relative;
+    left: 24px;
+  }
+  margin-top: 10px;
+  color: @white;
+}
+
+.icon{
+  @media(min-width: @screen-desktop){
+    text-align: right;
+    font-size: 40px;
+    line-height: 34px
+  }
+  .text-center();
+  font-size: 50px;
+}
+
+.title-landing{
+  @media(min-width: @screen-desktop){
+    position: relative;
+    top: -13px;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 26px;
+    .text-left();
+  }
+  .text-center();
+  color: white;
+}
+
+.clearfix{
+  .clearfix();
+}
+
+
+.main-lead{
+  @media(min-width: @screen-desktop){
+    margin: 10px 10px 30px 10px;
+    font-size: 15px;
+    line-height: 25px;
+    position: relative;
+    top: -13px;
+    left: -4px;
+    .text-left();
+  }
+  .text-center();
+  font-size: 10px;
+  margin: 5px 10px 5px 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  color: white;
+  line-height: 21px;
+  margin-bottom: 48px;
+}
+
+.black-box{
+  background: rgba(0,0,0,0.3);
+  /*margin: auto;*/
+}
+
+.main-lead1{
+  @media(min-width: @screen-desktop){
+    font-size: 30px;
+  }
+  list-style: none;
+  margin: 10px 0 10px 0px;
+  font-weight: bold;
+  font-family: 'Arimo', sans-serif;
+  font-size: 30px;
+  color: white;
+  line-height: 23px;
+}
+
+li.main-list{
+  margin-bottom: 15px;
+}
+
+.form-control.form-control-in{
+    @media(min-width: @screen-desktop){
+    display: inline;
+    width: 49.4%;
+    }
+    margin-top: 5px;
+}
+
+.navbar-brand{
+  color:@white;
+}
+
+.navbar-brand:hover{
+  color:#333333;
+  background-color: white;
+}
+
+form.search-box{
+ display: none;
+  @media (min-width: @screen-desktop){
+    position: relative;
+    float: right;
+    display: inline-block;
+  }
+}
+
+.navbar{
+  .clearfix();
+}
+
+.main-logo{
+  width: 330px;
+  height: 290px;
+  position: relative;
+  left:150px;
+}
+
+.form-box{
+  margin-right:15px;
+}
