@@ -3,12 +3,14 @@
 
   include('includes/connection.php');
 
+  include('includes/functions.php');
+
   if(isset($_POST['new'] ) ){
 
    $name =  $username = $password = $repassword = $email = "";
 
    if( !$_POST["name"] ) {
-       $nameError = "Please enter a username <br>";
+       $nameError = "Please enter a name <br>";
    } else {
        $name = validateFormData( $_POST["name"] );
    }

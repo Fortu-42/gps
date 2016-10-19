@@ -3,6 +3,10 @@
 
   include('includes/header.php');
 
+  if (isset($_GET['alert'] == success)) {
+    # code...
+  }
+
 ?>
 
 
