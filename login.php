@@ -1,12 +1,56 @@
 <?php
+    if (isset($_GET['alert']) ) {
+      if( $_GET['alert'] == 'success' ) {
+      $alertMessage = "<div class='alert alert-success'>Nueva Cuenta Creada <a class='close' data-dismiss='alert'>&times;</a></div>";
+      }
+    }
 
 
-  include('includes/header.php');
+  include('includes/functions.php');
 
-  /*if (isset($_GET['alert'] == success)) {
-    # code...
-  }*/
+  if(isset($_POST['login'] ) ){
 
+      $formUsername = validateFormData($_POST['form-user']);
+      $formPass = validateFormData($_POST['form-password']);
+
+      include ('includes/connection.php');
+
+      $query = "SELECT name, password FROM users WHERE username='$formUsername'";
+
+      $result = mysqli_query($conn, $query);
+
+      if(mysqli_num_rows($result) > 0){
+
+        while($row = mysqli_fetch_assoc($result)){
+          $username   = $row['name'];
+          $hashedPass = $row['password'];
+        }
+
+        if( password_verify( $formPass, $hashedPass ) ) {
+
+            // correct login details!
+            // store data in SESSION variables
+            $_SESSION['loggedInUser'] = $username;
+
+            // redirect user to clients page
+            header( "Location: dashboard/index.php" );
+        } else { // hashed password didn't verify
+
+            // error message
+            $loginError = "<div class='alert alert-danger'>Wrong username / password combination. Try again.</div>";
+        }
+      }else { // there are no results in database
+
+          // error message
+          $loginError = "<div class='alert alert-danger'>No such user in database. Please try again. <a class='close' data-dismiss='alert'>&times;</a></div>";
+      }
+
+  }
+
+
+
+mysqli_close($conn);
+include('includes/header.php');
 ?>
 
 
@@ -47,6 +91,7 @@
 
 
 <section class="container">
+  <?php echo $alertMessage; ?>
 
         <div class="row">
 
@@ -63,18 +108,18 @@
 
             <div class="form-top">
               <div class="form-top-left">
-                <h3>Regístrate Aquí</h3>
-                  <p>Empieza a gestionar tus viajes ahora:</p>
+                <h2 class="login-title">Regístrate Aquí</h2>
+                  <p class="login-lead">Empieza a gestionar tus viajes ahora:</p>
               </div>
               <div class="form-top-right">
-                <i class="fa fa-bus"></i>
+                <i class="fa fa-bus login-icon"></i>
               </div>
               </div>
               <div class="form-bottom">
             <form role="form" action="" method="post" class="registration-form">
               <div class="form-group">
-                <label class="sr-only" for="form-first-name">Usuario o Email</label>
-                  <input type="text" name="form-first-name" placeholder="Usuario" class="form-first-name form-control ">
+                <label class="sr-only" for="form-user">Usuario o Email</label>
+                  <input type="text" name="form-user" placeholder="Usuario" class="form-first-name form-control ">
                 </div>
 
                 <div class="form-group">
@@ -82,7 +127,7 @@
                   <input type="password" name="form-password" placeholder="Contraseña" class="form-last-name form-control ">
                 </div>
 
-                <button type="submit" class="btn">Iniciar Sesión</button>
+                <button type="submit" class="btn" name="login">Iniciar Sesión</button>
             </form>
           </div>
           </div>
