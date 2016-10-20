@@ -165,7 +165,10 @@
                   <label class="sr-only" for="email">Email</label>
                   <input type="text" name="email" placeholder="E-mail" class="form-email form-control">
                 </div>
+
                 <button type="submit" class="btn" name="new">Registrame</button>
+                <hr>
+                <h5 style="color:white;">Si ya tienes una cuenta, haz click <a href="login.php">aquí</a></h5>
             </form>
           </div>
           </div>
