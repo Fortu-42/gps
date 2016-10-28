@@ -180,4 +180,19 @@
 
   </div>
 </section>
+
+
+
+<section id="features" class="container">
+  <div class="row">
+    <div class=" col-md-offset-1 col-md-3 col-xs-12">
+        <img src="img/mock.jpg" alt="" class="image-responsive"  height:"300px" width:"100px"/>
+    </div>
+    <div class="col-md-7 col-xs-12">
+        <h1 class="ptitle text-center">Lorem Ipsum Dolo Sit.</h1>
+        <p class="mainP text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto aperiam magnam, expedita eum. Dolorem sapiente iure expedita soluta odio quidem perspiciatis at quo recusandae voluptatibus veritatis adipisci neque, placeat doloribus.</p>
+    </div>
+    
+
+</section>
 <?php include ('footer.php'); ?>

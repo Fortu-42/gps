@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+
+
+
     if (isset($_GET['alert']) ) {
       if( $_GET['alert'] == 'success' ) {
       $alertMessage = "<div class='alert alert-success'>Nueva Cuenta Creada <a class='close' data-dismiss='alert'>&times;</a></div>";
