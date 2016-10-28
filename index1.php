@@ -86,6 +86,7 @@
       </div>
     </nav>
 
+<section id="mainContainer">
 
   <div class="row">
     <div class="col-md-12 jumbotron text-center jumbo">
@@ -181,7 +182,7 @@
   </div>
 </section>
 
-
+</section>
 
 <section id="features" class="container">
   <div class="row">
@@ -192,7 +193,27 @@
         <h1 class="ptitle text-center">Lorem Ipsum Dolo Sit.</h1>
         <p class="mainP text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto aperiam magnam, expedita eum. Dolorem sapiente iure expedita soluta odio quidem perspiciatis at quo recusandae voluptatibus veritatis adipisci neque, placeat doloribus.</p>
     </div>
+    </div>
     
+    <hr>
+  
+    <div class="row">
+    <div class="features-des">
+      <div class="col-md-3 col-xs-12 text-center ico"><i class="fa fa-map-marker fa-2x"></i>
+      <p class="text-fea">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti fugiat necessitatibus eum neque quas eaque aliquid tenetur, nemo quod, magnam tempora quibusdam sunt ratione maxime non explicabo vero. Officiis, ad.</p>
+      </div>
+      <div class="col-md-3 col-xs-12 text-center ico"><i class="fa fa-street-view fa-2x"></i>
+      <p class="text-fea">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi praesentium cupiditate inventore doloremque harum non nobis quis, accusantium dolor. Odit sed voluptatibus vitae alias, quos saepe obcaecati eligendi perspiciatis in.</p>
+      </div>
+      <div class="col-md-3 col-xs-12 text-center ico"><i class="fa fa-location-arrow fa-2x"></i>
+      <p class="text-fea">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis temporibus similique autem vel ea voluptate qui aut, nobis eligendi accusamus omnis maiores porro voluptatum sequi repellendus totam quaerat. Vero, officiis.</p>
+      </div>
+      <div class="col-md-3 col-xs-12 text-center ico last"><i class="fa fa-road fa-2x"></i>
+      <p class="text-fea">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, dolore, quidem nulla vero quos omnis quas aliquam itaque soluta unde reiciendis illo sint consectetur accusamus quasi, aperiam quis incidunt. Dicta.</p>
+      </div>
+    </div>
+    </div>
+  
 
 </section>
 <?php include ('footer.php'); ?>
