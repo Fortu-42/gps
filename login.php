@@ -20,7 +20,7 @@ session_start();
 
       include ('includes/connection.php');
 
-      $query = "SELECT name, password FROM users WHERE username='$formUsername'";
+      $query = "SELECT name, password FROM user WHERE username='$formUsername'";
 
       $result = mysqli_query($conn, $query);
 

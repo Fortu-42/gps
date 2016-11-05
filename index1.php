@@ -40,7 +40,7 @@
    }
 
     if($name && $username && $email && $password){
-      $query = "INSERT INTO users (id, name, username, email, password, signup_date)
+      $query = "INSERT INTO user (id, name, username, email, password, signup_date)
       VALUES (NULL, '$name', '$username', '$email', '$password', CURRENT_TIMESTAMP)";
     }
 
