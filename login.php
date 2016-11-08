@@ -121,7 +121,7 @@ include('includes/header.php');
               </div>
               </div>
               <div class="form-bottom">
-            <form role="form" action="" method="post" class="registration-form">
+            <form role="form" action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" class="registration-form">
               <div class="form-group">
                 <label class="sr-only" for="form-user">Usuario o Email</label>
                   <input type="text" name="form-user" placeholder="Usuario" class="form-first-name form-control ">

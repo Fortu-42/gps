@@ -8,11 +8,7 @@
 
 body{
   #gradient1.directional1(rgba(0,0,0,0.3); rgba(0,0,0,0.4); 45deg);
-  overflow-x: hidden
-}
-
-#mainContainer{
-  padding-bottom: 70px;
+  overflow-x: hidden;
 }
 
 .jumbo{
@@ -164,6 +160,8 @@ form.search-box{
 
 .form-box{
   margin-right:15px;
+  margin-top: 25px;
+  margin-bottom: 70px;
 }
 
 .form-box.form-box-in{
@@ -208,7 +206,7 @@ form.search-box{
 
 .features-des{
   background-color: @gray-light;
-  height: 200px;
+  height: 190px;
   width: 95%;
   margin: auto;
   border-radius: 10px;
@@ -221,10 +219,64 @@ form.search-box{
   border-right: solid 1px white;
 }
 
-div.features-des:last-child{
-  border: none;
-}
-
 .ico.last{
   border:none;
+}
+ 
+.alert.alert-success{
+  margin-top: 70px;
+  margin-bottom: -100px;
+}
+
+ hr{
+   width: 90%;
+ }
+
+
+.fea-button{
+position: relative;
+right: 36px;
+}
+
+.text-fea{
+  line-height: 25px;
+  margin-top: 15px;
+}
+
+.text-box{
+  margin-top: 10px;
+}
+
+.fea-button1{
+  position: relative;
+  right: 38px;
+}
+
+textarea{
+  resize: none;
+}
+
+.form-control.form-contact-in{
+    @media(min-width: @screen-desktop){
+    display: inline;
+    width: 49.8%;
+    }
+    margin-top: 5px;
+}
+
+.contact-icon{
+  position: relative;
+  top: 15px;
+  right: 20px;
+}
+
+.contact-title{
+  color: white;
+  font-weight: 300;
+  font-size: 38px;
+}
+
+.contact-lead{
+  font-size: 20px;
+  margin-bottom: -20px;
 }
