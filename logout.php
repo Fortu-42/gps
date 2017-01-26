@@ -8,5 +8,5 @@ session_unset();
 
 session_destroy();
 
-header("Location: ../login.php?alert=loggedout");
+header("Location: ../gps/login.php"); /*?alert=loggedout*/
  ?>

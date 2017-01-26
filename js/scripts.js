@@ -1,15 +1,22 @@
 
 jQuery(document).ready(function() {
 
+
+  $('#main-register-form').validator()
+
+
+  API_KEY=  AIzaSyA7Q0JAJUtZ8eAS_K_lbh-NcFFQbpk2ynM 
     /*
+
+
         Fullscreen background
     */
 
-
+   
     /*
         Login form validation
     */
-    $('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('focus', function() {
+   /* $('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('focus', function() {
     	$(this).removeClass('input-error');
     });
 
@@ -26,11 +33,11 @@ jQuery(document).ready(function() {
     	});
 
     });
-
+*/
     /*
         Registration form validation
     */
-    $('.registration-form, input[type="text"], input[type="password"], .registration-form, textarea').on('focus', function() {
+  /*  $('.registration-form, input[type="text"], input[type="password"], .registration-form, textarea').on('focus', function() {
     	$(this).removeClass('input-error');
     });
 
@@ -57,6 +64,8 @@ jQuery(document).ready(function() {
     	});
 
     });
+
+*/
 
 
 });

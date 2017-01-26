@@ -167,7 +167,7 @@ form.search-box{
 .form-box.form-box-in{
   margin-top: 70px;
   @media(min-width: @screen-desktop){
-    margin-top: 150px;
+    margin-top: 100px;
   }
 }
 
@@ -256,6 +256,10 @@ textarea{
   resize: none;
 }
 
+#contact{
+  width:100%;
+}
+
 .form-control.form-contact-in{
     @media(min-width: @screen-desktop){
     display: inline;
@@ -279,4 +283,28 @@ textarea{
 .contact-lead{
   font-size: 20px;
   margin-bottom: -20px;
+}
+
+.credits{
+  background-color: #333;
+  padding: 15px 0 15px 0;
+  margin:auto;
+}
+
+.author{
+  margin: auto;
+  color: @white;
+}
+
+.has-error .control-label,
+.has-error .help-block,
+.has-error .form-control-feedback {
+    border: 3px solid #a94442;
+}
+
+/* Color of valid field */
+.has-success .control-label,
+.has-success .help-block,
+.has-success .form-control-feedback {
+    border: 3px solid #3c763d;
 }

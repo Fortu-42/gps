@@ -22,21 +22,25 @@
    }
 
    if( !$_POST["password"] ) {
-       $passwordError = "Please enter a password <br>";
+       $passwordError = "Ingrese una contraseña válida <br>";
 
    } elseif ($_POST["password"] == $_POST["repassword"]) {
        $password = validateFormData( $_POST["password"] );
        $password = password_hash($password, PASSWORD_DEFAULT);
 
-     }else {
+     }elseif ($_POST["password"] =! $_POST["repassword"]) {
        $passwordError = "Las contraseñas no coinciden <br>";
      }
 
 
-   if( !$_POST["email"] ) {
-       $emailError = "Please enter an Email <br>";
+   if( !$_POST["email"]) {
+       $emailError = "Please enter a valid Email <br>";
    } else {
        $email = validateFormData( $_POST["email"] );
+       if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+          $emailError = "Please enter a valid Email <br>";
+          $email = false;
+       }
    }
 
     if($name && $username && $email && $password){
@@ -120,16 +124,16 @@
             <div class="row">
 							<div class="col-sm-2 icon"><i class="fa fa-users"></i></div>
 							<div class="col-sm-10 clearfix">
-								<h3 class="title-landing">Menos colas</h3>
-								<p class="main-lead">Visualiza al momento, cuando es tu turno, en la unidad BTR de tu preferencia. Con TecnoBus GPS podrás saber cuanto tiempo falta para que llegue tu turno en la unidad de tu preferencia.</p>
+								<h3 class="title-landing">Selecciona Paradas</h3>
+								<p class="main-lead">Selecciona las paradas que más uses y planifica tus viajes a travéz de la ciudad</p>
 							</div>
 						</div>
 
             <div class="row">
 							<div class="col-sm-2 icon"><i class="fa fa-calendar-check-o" aria-hidden="true"></i></div>
 							<div class="col-sm-10 clearfix">
-								<h3 class="title-landing">Conoce los horarios</h3>
-								<p class="main-lead">Planea tus viajes en la ciudad con los horarios establecidos, establece una ruta y determina cuanto tiempo te tomará llegar a tu destino de manera rapida y sencilla</p>
+								<h3 class="title-landing">Planea tus viajes a travéz de la ciudad</h3>
+								<p class="main-lead">¿No sabes como llegar al sitio donde necesitas estar? te mostramos como transportarte a travéz de la ciudad en el sistema de Buses de Tránsito Rápido*</p>
 							</div>
 						</div>
           </div>
@@ -151,24 +155,35 @@
               </div>
               </div>
               <div class="form-bottom">
-            <form role="form" action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" class="registration-form">
+            <form role="form" action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" id="main-register-form" class="registration-form">
+
               <div class="form-group">
-                <label class="sr-only" for="name">Nombre</label>
-                  <input type="text" name="name" placeholder="Nombre..." class="form-first-name form-control form-control-in">
+                <label class="sr-only control-label" for="inputName">Nombre y Apellido</label>
+                <span class="input-error"><?php echo $nameError; ?></span>
+                  <input type="text" name="name" placeholder="Nombre y Apellido" class="form-first-name form-control form-control-in" id="inputName" required>
+              </div>
 
-                  <label class="sr-only" for="username">Usuario</label>
-                  <input type="text" name="username" placeholder="Usuario..." class="form-last-name form-control form-control-in">
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="password">Contraseña</label>
-                  <input type="password" name="password" placeholder="Contraseña" class="form-last-name form-control form-control-in">
+              <div class="form-group">
+                  <label class="sr-only control-label" for="username">Usuario</label>
+                  <span class="input-error"><?php echo $usernameError; ?></span>
+                  <input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" name="username" placeholder="Nombre de Usuario" class="form-last-name form-control form-control-in" required>
+                  <span class="glyphicon form-control-feedback" aria-hidden="false"></span>
+                 </div>  
 
-                  <label class="sr-only" for="repassword">Repetir Contraseña</label>
-                  <input type="password" name="repassword" placeholder="Repetir Contraseña" class="form-email form-control form-control-in">
-                </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="password">Contraseña</label>
+                    <span class="input-error"><?php echo $passwordError; ?></span>
+                    <input type="password" name="password" placeholder="Contraseña" class="form-last-name form-control form-control-in" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="sr-only" for="repassword">Repetir Contraseña</label>
+                    <input type="password" name="repassword" placeholder="Repetir Contraseña" class="form-email form-control form-control-in">
+                  </div>
 
                 <div class="form-group">
                   <label class="sr-only" for="email">Email</label>
+                  <span class="input-error"><?php echo $emailError; ?></span>
                   <input type="text" name="email" placeholder="E-mail" class="form-email form-control">
                 </div>
 
@@ -230,7 +245,7 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-1 col-xs-12 text-box">
         <h1 class="ptitle text-center">TecnoBus GPS también es responsive</h1>
-        <p class="mainP text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias consectetur ratione expedita quo cupiditate deleniti. Modi non, voluptatibus fugiat rerum commodi numquam quisquam vel consequuntur maiores blanditiis ipsa neque porro.</p>
+        <p class="mainP text-center">Selecciona unidades y paradas, planea viajes en donde estés, siempre y cuando tengas conexión GPS</p>
         <div class="col-md-4 col-md-offset-5">
             <button type="button" class="btn btn-primary fea-button1">Crear una cuenta</button>
         </div>
@@ -245,7 +260,7 @@
 
 </section>
 
-<section id="contact">
+<section id="contact" class="container">
   <div class="col-md-10 col-md-offset-1">
           <div class="form-box form-box-in">
 
@@ -259,17 +274,17 @@
               </div>
               </div>
               <div class="form-bottom">
-            <form role="form" action="" method="post" class="registration-form">
+            <form role="form" action="" method="post" class="registration-form data-toggle="validator">
               <div class="form-group">
-                <label class="sr-only" for="contact-name">Nombre</label>
-                  <input type="text" name="contact-name" placeholder="Nombre" class="form-first-name form-control form-contact-in">
+                <label class="sr-only control-label" for="contact-name">Nombre</label>
+                  <input type="text" name="contact-name" placeholder="Nombre" class="form-first-name form-control form-contact-in" id="contact-name" required>
                   <label class="sr-only" for="contact-user">Usuario</label>
                   <input type="text" name="contact-user" placeholder="Usuario" class="form-last-name form-control form-contact-in">
                 </div>
 
                <div class="form-group">
                   <label class="sr-only" for="contact-email">Correo</label>
-                  <input type="text" name="contact-email" placeholder="Correo Electrónico" class="form-last-name form-control">
+                  <input type="e-mail" name="contact-email" placeholder="Correo Electrónico" class="form-control" required>
                 </div>
 
                 <div class="form-group">
@@ -285,4 +300,8 @@
     </div>
 
 </section>
+
+<footer class="credits" class="container-fluid">
+  <p class="author text-center">Crafted with &hearts; in Venezuela by <a href="#">Fortunato</a></p>
+</footer>
 <?php include ('footer.php'); ?>
