@@ -1,3 +1,6 @@
+
+
+
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/chart.min.js"></script>
@@ -5,8 +8,10 @@
 <script src="js/easypiechart.js"></script>
 <script src="js/easypiechart-data.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
+<script src="js/script.js"></script>
 <script>
-  $('#calendar').datepicker({
+ $('#calendar').datepicker({
   });
 
   !function ($) {
@@ -23,6 +28,4 @@
     if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
   })
 </script>
-</body>
 
-</html>

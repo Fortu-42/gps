@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+
+      var pubnub = new PubNub({
+        publishKey: 'your_pub_key',
+        subscribeKey: 'your_sub_key'
+      });
+
+      var channel = "c3-spline" + Math.random();
+
+      eon.chart({
+        channels: [channel],
+        flow: true,
+        pubnub: pubnub,
+        generate: {
+          bindto: '#chart',
+          data: {
+            type: 'spline',
+            labels: false
+          }
+        }
+      });
+    </script>
+    <script>
+      setInterval(function(){
+
+        pubnub.publish({
+          channel: channel,
+          message: {
+            eon: {
+              'Austin': Math.floor(Math.random() * 99),
+              'New York': Math.floor(Math.random() * 99),
+              'San Francisco': Math.floor(Math.random() * 99),
+              'Portland': Math.floor(Math.random() * 99)
+            }
+          }
+        });
+
+      }, 1000);
+    </script>
+  </body>
+</html>

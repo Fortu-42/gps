@@ -1,0 +1,21 @@
+{
+  "name": "dashboard",
+  "homepage": "https://github.com/Fortu-42/gps",
+  "authors": [
+    "Fortu-42 <fortu_72@hotmail.com>"
+  ],
+  "description": "dashboardGPS",
+  "main": "index.php",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "c3": "^0.4.11",
+    "eon-chart": "^1.1.0"
+  }
+}

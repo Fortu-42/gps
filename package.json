@@ -4,13 +4,16 @@
   "description": "gps",
   "main": "index.js",
   "dependencies": {
+    "eon-chart": "^1.0.3",
     "grunt": "^1.0.1",
-    "grunt-contrib-less": "^1.4.0"
+    "grunt-contrib-less": "^1.4.0",
+    "mapbox": "^1.0.0-beta6"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-less": "^1.4.0",
     "grunt-contrib-watch": "^1.0.0",
+    "gulp": "^3.9.1",
     "jit-grunt": "^0.10.0"
   },
   "scripts": {

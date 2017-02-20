@@ -1,0 +1,46 @@
+{
+  "name": "eon-chart",
+  "version": "1.1.0",
+  "homepage": "https://github.com/pubnub/eon-chart",
+  "authors": [
+    "Ian Jennings <ian@meetjennings.com>"
+  ],
+  "description": "C3 Realtime Charts with PubNub. Part of the EON Framework.",
+  "main": "pubnub-c3.js",
+  "keywords": [
+    "pubnub",
+    "d3",
+    "c3",
+    "charts",
+    "donut",
+    "graph",
+    "realtime",
+    "bar",
+    "series",
+    "stack"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.5.5",
+    "pubnub": "~4.0.10",
+    "visibilityjs": "^1.2.4",
+    "c3": "^0.4.11"
+  },
+  "_release": "1.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.1.0",
+    "commit": "ca62017ec1f8ffca3c546c121314e8d688a6b6d1"
+  },
+  "_source": "https://github.com/pubnub/eon-chart.git",
+  "_target": "^1.1.0",
+  "_originalSource": "eon-chart",
+  "_direct": true
+}

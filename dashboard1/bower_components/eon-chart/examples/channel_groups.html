@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+
+      var pubnub = new PubNub({
+        publishKey: 'your_pub_key',
+        subscribeKey: 'your_sub_key'
+      });
+
+      var channels = ['pubnub-c3-1', 'pubnub-c3-2', 'pubnub-c3-3'];
+
+      // create channel group
+      pubnub.channelGroups.addChannels(
+          {
+              channels: channels,
+              channelGroup: "pubnub-c3-example"
+          }, 
+          function(status) {
+              if (status.error) {
+                  console.log("operation failed w/ status: ", status);
+              } else {
+                  console.log("operation done!")
+
+                  // list channels
+                  pubnub.channelGroups.listChannels(
+                    {
+                      channelGroup: "pubnub-c3-example"
+                    }, 
+                    function (status, response) {
+                      if (status.error) {
+                        console.log("operation failed w/ error:", status);
+                        return;
+                      }
+                       
+                      console.log("listing push channel for device")
+                      response.channels.forEach( function (channel) {
+                        console.log(channel)
+                      })
+                    }
+                  );
+
+              }
+          }
+      );
+
+
+      eon.chart({
+        channelGroups: ['pubnub-c3-example'],
+        history: true,
+        flow: true,
+        pubnub: pubnub,
+        connect: connect,
+        generate: {
+          bindto: '#chart',
+          data: {
+            type: 'spline',
+            labels: false
+          }
+        }
+      });
+
+      function publish(pointId, channel) {
+
+        var m = {
+          eon:{}
+        };
+        m.eon[pointId] = Math.floor(Math.random() * 99);
+
+        pubnub.publish({
+          channel: channel,
+          message: m
+        });
+
+      }
+
+      function connect() {
+
+        console.log('connect')
+
+        setInterval(function(){
+          publish('first', channels[0]);
+          publish('second', channels[1]);
+          publish('third', channels[2]);
+        }, 1000);
+
+      };
+    </script>
+  </body>
+</html>

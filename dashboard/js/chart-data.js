@@ -104,7 +104,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 	
 				];
 
-window.onload = function(){
+/*window.onload = function(){
 	var chart1 = document.getElementById("line-chart").getContext("2d");
 	window.myLine = new Chart(chart1).Line(lineChartData, {
 		responsive: true
@@ -120,4 +120,4 @@ window.onload = function(){
 	window.myPie = new Chart(chart4).Pie(pieData, {responsive : true
 	});
 	
-};
+};*/

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
+    <title>TecnoBus GPS - Dashboard</title>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-10 col-xs-10">
+        <div id="chart"></div>
+      </div>
+    </div>
+    <script>
+
+    var pubnub = new PubNub({
+        publishKey: 'pub-c-ae2645a4-40ac-490b-bc15-0cbb101ec051',
+        subscribeKey: 'sub-c-b1668962-e36c-11e6-ac69-0619f8945a4f'
+      });
+
+      var channel = "c3-spline-test-test-test";
+
+      eon.chart({
+        channels: [channel],
+        flow: true,
+        pubnub: pubnub,
+        generate: {
+          bindto: '#chart',
+          data: {
+            type: 'spline',
+            labels: false
+          },
+            axis: {
+                x: {
+                    show: false,
+                },
+                y: {
+                    max: 600,
+                    min: -600
+                }
+            }
+        }
+      });
+    </script>
+    <script>
+      setInterval(function(){
+
+        console.log(pubnub)
+        console.log(pubnub.publish)
+
+        pubnub.publish({
+          channel: channel,
+          message: {
+            eon: {
+              'Austin': Math.floor(Math.random() * 399),
+              'New York': Math.floor(Math.random() * 399),
+              'San Francisco': Math.floor(Math.random() * -399),
+              'Portland': Math.floor(Math.random() * -399)
+            }
+          }
+        });
+
+      }, 1000);
+    </script>
+  </body>
+</html>
