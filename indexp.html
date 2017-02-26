@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TecnoBus GPS - Dashboard</title>
+
+
+<script type="text/javascript" src="//pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
+<link type="text/css" rel="stylesheet" href="//pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-table.css" rel="stylesheet">
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+
+<!--Icons-->
+
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+
+<script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
+<link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
+
+
+
+
+<style>
+    #map{
+        height:300px;
+        background-color: red;
+    }
+</style>
+</head>
+
+<body>
+
+<div id="map"></div>
+<script type="text/javascript">
+
+var channel = 'south-coast-bus-data';
+
+var pubnub = new PubNub({
+  publishKey: 'pub-c-ffef9f39-c598-4bfa-a4aa-65874150cd42',
+  subscribeKey: 'sub-c-a3e9dcca-eafc-11e6-889b-02ee2ddab7fe'
+});
+
+eon.map({
+  pubnub: pubnub,
+  id: 'map',
+  mbId: 'fortunatoherrera.1e98df8e',
+  mbToken: 'pk.eyJ1IjoiZm9ydHVuYXRvaGVycmVyYSIsImEiOiJjaXpkMGhqbXQwaXd1MzJvZXRuMWZob3k3In0.062NwRpCxTr4xvTNNuvbsg',
+  channels: [channel],
+  rotate: true,
+  history: true,
+  marker: function (latlng, data) {
+
+    var marker = new L.RotatedMarker(latlng, {
+      icon: L.icon({
+        iconUrl: 'https://i.imgur.com/2fmFQfN.png',
+        iconSize: [9, 32]
+      })
+    });
+
+    marker.bindPopup('Route ' + data.routeTag.toUpperCase());
+
+    return marker;
+
+  }
+});
+
+
+
+var pubnub = new PubNub({
+  publishKey: 'pub-c-ffef9f39-c598-4bfa-a4aa-65874150cd42',
+  subscribeKey: 'sub-c-a3e9dcca-eafc-11e6-889b-02ee2ddab7fe'
+});
+
+setInterval(function(){
+
+  PUBNUB.publish({
+    channel: 'south-coast-bus-data',
+    message:
+      [
+        {"latlng":[31,-99]},
+        {"latlng":[32,-100]},
+        {"latlng":[33,-101]},
+        {"latlng":[35,-102]}
+      ]
+  });
+
+}, 1000);
+
+</script>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+  </body>
+  
+
+
+</html>

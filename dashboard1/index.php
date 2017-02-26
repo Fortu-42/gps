@@ -15,19 +15,17 @@ include('includes/header.php');
 
 <script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
 <link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
-<script type="text/javascript" src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.4.4.js"></script>
 
 
 
 <style>
-    #html-id{
-        height:300px;
-        background-color: red;
+    #map{
+        height:500px;
     }
 </style>
 </head>
 
-<div id='map'></div>
+<div id="map"></div>
 <script type="text/javascript">
 
 var pubnub = new PubNub({
@@ -35,31 +33,18 @@ var pubnub = new PubNub({
   subscribeKey: 'sub-c-a3e9dcca-eafc-11e6-889b-02ee2ddab7fe'
 });
 
+var channel = 'BTR';
+
 eon.map({
   pubnub: pubnub,
   id: 'map',
-  mbId: 'cizd2vll41wpx2wmn13csmd47',
   mbToken: 'pk.eyJ1IjoiZm9ydHVuYXRvaGVycmVyYSIsImEiOiJjaXpkMGhqbXQwaXd1MzJvZXRuMWZob3k3In0.062NwRpCxTr4xvTNNuvbsg',
-  channel: 'south-coast-bus-data',
-  rotate: true,
-  history: true,
-  marker: function (latlng, data) {
-
-    var marker = new L.RotatedMarker(latlng, {
-      icon: L.icon({
-        iconUrl: 'https://i.imgur.com/2fmFQfN.png',
-        iconSize: [9, 32]
-      })
+  mbId: 'fortunatoherrera.cizfmguga00d033l4hs3oyjwd-8sxr3',
+  channels: [channel],
     });
-
-    marker.bindPopup('Route ' + data.routeTag.toUpperCase());
-
-    return marker;
-
-  }
-});
 </script>
 
+ </body>
 
-
-  </body>
+</html>
+ 
