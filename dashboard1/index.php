@@ -39,7 +39,7 @@ eon.map({
   pubnub: pubnub,
   id: 'map',
   mbToken: 'pk.eyJ1IjoiZm9ydHVuYXRvaGVycmVyYSIsImEiOiJjaXpkMGhqbXQwaXd1MzJvZXRuMWZob3k3In0.062NwRpCxTr4xvTNNuvbsg',
-  mbId: 'fortunatoherrera.cizfmguga00d033l4hs3oyjwd-8sxr3',
+  mbId: 'fortunatoherrera.117c4521',
   channels: [channel],
     });
 </script>
