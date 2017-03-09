@@ -12,12 +12,6 @@ include('includes/header.php');
 
  ?>
 
-
-<script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
-<link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
-
-
-
 <style>
     #map{
         height:500px;
@@ -25,24 +19,84 @@ include('includes/header.php');
 </style>
 </head>
 
+<div class="form-group">
+     <input list="paradas" id="paradas1"  type="datalist" name="datalist" placeholder="Parada a Seleccionar" class="form-last-name form-control form-control-in">
+<datalist id="paradas"> 
+    <option value="Terminal de Barcelona">
+    <option value="Puente Bolívar">
+    <option value="Robert Serra">
+    <option value="Puente Monagas">
+    <option value="Boyacá">
+    <option value="La Rotaria">
+    <option value="Crucero">
+    <option value="Vistamar">
+    <option value="Ministerio">
+    <option value="Las Garzas">
+</datalist>
+</div>
+
 <div id="map"></div>
-<script type="text/javascript">
 
-var pubnub = new PubNub({
-  publishKey: 'pub-c-ffef9f39-c598-4bfa-a4aa-65874150cd42',
-  subscribeKey: 'sub-c-a3e9dcca-eafc-11e6-889b-02ee2ddab7fe'
-});
+<!-- Inicio modal Terminal de Barcelona -->
 
-var channel = 'BTR';
+<div class="modal fade bs-example-modal-lg" id="Parada1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
 
-eon.map({
-  pubnub: pubnub,
-  id: 'map',
-  mbToken: 'pk.eyJ1IjoiZm9ydHVuYXRvaGVycmVyYSIsImEiOiJjaXpkMGhqbXQwaXd1MzJvZXRuMWZob3k3In0.062NwRpCxTr4xvTNNuvbsg',
-  mbId: 'fortunatoherrera.117c4521',
-  channels: [channel],
-    });
-</script>
+          <div class="row">
+            <div class="col-xs-6">
+              <img  alt="foto-de-parada" class="img-responsive" id="imgParada">
+            </div>
+            <div class="col-xs-6">
+              <img  alt="foto-terminal-mapa" class="img-responsive" id="imgMapParada">
+            </div>
+          </div>
+
+          <div class="row">
+            <h4 class="text-center">Próximas Unidades</h3>
+              <div class="col-xs-6 col-xs-offset-3">
+                <table class="table table-hover text-center table-condensed table-striped">
+                  <tr>
+                    <th class="text-center">Unidad</th>
+                    <th class="text-center">Tiempo Estimado de Llegada</th>
+                  </tr>
+                  <tr>
+                    <td>021</td>
+                    <td>30:06</td>
+                  </tr>
+                  <tr>
+                    <td>022</td>
+                    <td>1:20:00</td>
+                  </tr>
+                  <tr>
+                    <td>023</td>
+                    <td>2:00:00</td>
+                  </tr>
+                  <tr>
+                    <td>024</td>
+                    <td>2:10:00</td>
+                  </tr>
+                </table>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Planear Viaje en Esta Parada</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<? 
+    include('includes/footer.php');
+
+?>
 
  </body>
 

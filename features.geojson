@@ -1,0 +1,362 @@
+﻿{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Puente Bolívar",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.680518,
+          10.135116
+        ],
+        "type": "Point"
+      },
+      "id": "0c54c110ff9f1c590dae03f77754cf3b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chuparin",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.634259,
+          10.205494
+        ],
+        "type": "Point"
+      },
+      "id": "2758ae7252881460dfbc987722d71e7c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ministerio",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.679319,
+          10.178716
+        ],
+        "type": "Point"
+      },
+      "id": "34e52f740cc3074fb2823a784eb14b8e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vistamar",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.682283,
+          10.176422
+        ],
+        "type": "Point"
+      },
+      "id": "36c3298a92aeaa780ebd54730317625f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bella Vista",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.63518,
+          10.200578
+        ],
+        "type": "Point"
+      },
+      "id": "3f91ec96961a2f5b6635372875060f77"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boyacá",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.682688,
+          10.154474
+        ],
+        "type": "Point"
+      },
+      "id": "411f9899d184df22c1f9848110e3c386"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Terminal de barcelona",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.670987,
+          10.130029
+        ],
+        "type": "Point"
+      },
+      "id": "49b959236f4aa4abea0d2398efb8c046"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Las Garzas",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.669011,
+          10.181224
+        ],
+        "type": "Point"
+      },
+      "id": "57b57f3e3eca5b386c189f804232fe8d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "La Rotaria",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.682908,
+          10.168848
+        ],
+        "type": "Point"
+      },
+      "id": "6fbdd37f4db4635d169e9a3ec2ea217d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sierra Maestra",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.638802,
+          10.195264
+        ],
+        "type": "Point"
+      },
+      "id": "7412a68cc4cdc2ea5c5c307fa8a45a90"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Crucero",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.682064,
+          10.174454
+        ],
+        "type": "Point"
+      },
+      "id": "77b1512cf480b14b1f618d3352115539"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tierra Adentro",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.637238,
+          10.195269
+        ],
+        "type": "Point"
+      },
+      "id": "8beb7e6b40e22a7162d7e8bd545c9e3f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Polideportivo",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.659662,
+          10.181879
+        ],
+        "type": "Point"
+      },
+      "id": "a08d92fa02591ea7377c61b70d980cfc"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Molorca",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.650659,
+          10.182233
+        ],
+        "type": "Point"
+      },
+      "id": "b4b2fc5ae3277a67251f021fb361269d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sotillo",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.632666,
+          10.214244
+        ],
+        "type": "Point"
+      },
+      "id": "c8d9a208d55cd4745a65ea41ceb4523f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "El Pensil",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.631286,
+          10.220619
+        ],
+        "type": "Point"
+      },
+      "id": "d239bac4d50b06126d570a36200e96e2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pozuelos",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.643061,
+          10.187035
+        ],
+        "type": "Point"
+      },
+      "id": "e529b28117b00624c2555a4e9b2d6524"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Molorca",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.649683,
+          10.183027
+        ],
+        "type": "Point"
+      },
+      "id": "e72e32bb0f5003c77c412d7cf1deb49c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Puente Monagas",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.682379,
+          10.146125
+        ],
+        "type": "Point"
+      },
+      "id": "e9cb91e0ac5ad6b81b5c29e116900405"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Robert Serra",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.683087,
+          10.139364
+        ],
+        "type": "Point"
+      },
+      "id": "f70b2d963a084917a2badc2aee7824e6"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alberto Lovera",
+        "type": "BusStop",
+        "website": "#",
+        "maki": "bus"
+      },
+      "geometry": {
+        "coordinates": [
+          -64.628612,
+          10.225994
+        ],
+        "type": "Point"
+      },
+      "id": "fb3b413fa14688a88c21decbee0f7311"
+    }
+  ],
+  "type": "FeatureCollection"
+}

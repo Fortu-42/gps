@@ -12,7 +12,8 @@ module.exports = function(grunt) {
           optimization: 2
         },
         files: {
-          "css/style.css": "source/styles.less" // destination file and source file
+          "css/style.css": "source/styles.less",
+          "dashboard1/css/style.css": "source/style.less" // destination file and source file
         }
       }
     },
