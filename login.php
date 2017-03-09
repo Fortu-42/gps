@@ -38,7 +38,7 @@ session_start();
             $_SESSION['loggedInUser'] = $username;
 
             // redirect user to clients page
-            header( "Location: dashboard/index.php" );
+            header( "Location: dashboard1/index.php" );
         } else { // hashed password didn't verify
 
             // error message

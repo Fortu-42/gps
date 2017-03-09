@@ -20,19 +20,30 @@ include('includes/header.php');
 </head>
 
 <div class="form-group">
-     <input list="paradas" id="paradas1"  type="datalist" name="datalist" placeholder="Parada a Seleccionar" class="form-last-name form-control form-control-in">
-<datalist id="paradas"> 
-    <option value="Terminal de Barcelona">
-    <option value="Puente Bolívar">
-    <option value="Robert Serra">
-    <option value="Puente Monagas">
-    <option value="Boyacá">
-    <option value="La Rotaria">
-    <option value="Crucero">
-    <option value="Vistamar">
-    <option value="Ministerio">
-    <option value="Las Garzas">
-</datalist>
+<select class="form-control" id="paradas" style="width:180px;"> 
+    <option value="">Seleccionar Parada</option>
+    <option value="Terminal de Barcelona">Terminal de Barcelona</option>
+    <option value="Puente Bolívar">Puente Bolívar</option>
+    <option value="Robert Serra">Robert Serra</option>
+    <option value="Puente Monagas">Puente Monagas</option>
+    <option value="Boyacá">Boyacá</option>
+    <option value="La Rotaria">La Rotaria</option>
+    <option value="Crucero">Crucero</option>
+    <option value="Vistamar">Vistamar</option>
+    <option value="Ministerio">Ministerio</option>
+    <option value="Las Garzas">Las Garzas</option>
+    <option value="Polideportivo">Polideportivo</option>
+    <option value="Molorca Sur">Molorca Sur</option>
+    <option value="Molorca Norte">Molorca Norte</option>
+    <option value="Pozuelos">Pozuelos</option>
+    <option value="Tierra Adentro">Tierra Adentro</option>
+    <option value="Sierra Maestra">Sierra Maestra</option>
+    <option value="Bella Vista">Bella Vista</option>
+    <option value="Chuparín">Chuparín</option>
+    <option value="Sotillo">Sotillo</option>
+    <option value="El Pensíl">El Pensíl</option>
+    <option value="Alberto Lovera">Alberto Lovera</option>
+</select>
 </div>
 
 <div id="map"></div>
@@ -49,10 +60,10 @@ include('includes/header.php');
       <div class="modal-body">
 
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-6" id="imgParadaC">
               <img  alt="foto-de-parada" class="img-responsive" id="imgParada">
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-6" id="imgMapParadaC">
               <img  alt="foto-terminal-mapa" class="img-responsive" id="imgMapParada">
             </div>
           </div>
