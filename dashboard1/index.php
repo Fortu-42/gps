@@ -106,7 +106,7 @@ include('includes/header.php');
 
 <? 
     include('includes/footer.php');
-
+    include('js/script.php');
 ?>
 
  </body>

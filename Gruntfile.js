@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         },
         files: {
           "css/style.css": "source/styles.less",
-          "dashboard1/css/style.css": "source/style.less" // destination file and source file
+          "dashboard1/css/style.css": "../source/style.less" // destination file and source file
         }
       }
     },

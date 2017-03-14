@@ -155,41 +155,100 @@
               </div>
               </div>
               <div class="form-bottom">
-            <form role="form" action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" id="main-register-form" class="registration-form">
+            <form id="defaultForm" role="form" action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" id="main-register-form" class="registration-form form-horizontal">
 
+
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Full name</label>
+                  <div class="col-lg-4">
+                      <input type="text" class="form-control" name="firstName" placeholder="First name" />
+                  </div>
+                   <div class="col-lg-4">
+                      <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+                  </div>
+              </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Username</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="username" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Email address</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="email" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Password</label>
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" name="password" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Retype password</label>
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" name="confirmPassword" />
+                            </div>
+                        </div>
+
+
+                           <div class="form-group">
+                            <label class="col-lg-3 control-label" id="captchaOperation"></label>
+                            <div class="col-lg-2">
+                                <input type="text" class="form-control" name="captcha" />
+                            </div>
+                        </div>
+
+
+
+
+            <!--
               <div class="form-group">
                 <label class="sr-only control-label" for="inputName">Nombre y Apellido</label>
                 <span class="input-error"><?php echo $nameError; ?></span>
-                  <input type="text" name="name" placeholder="Nombre y Apellido" class="form-first-name form-control form-control-in" id="inputName" required>
+                  <input type="text" name="name" placeholder="Nombre y Apellido" class=" form-control" id="inputName">
               </div>
 
               <div class="form-group">
                   <label class="sr-only control-label" for="username">Usuario</label>
                   <span class="input-error"><?php echo $usernameError; ?></span>
-                  <input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" name="username" placeholder="Nombre de Usuario" class="form-last-name form-control form-control-in" required>
-                  <span class="glyphicon form-control-feedback" aria-hidden="false"></span>
+                  <input type="text" name="username" placeholder="Nombre de Usuario" class="form-control" required>
                  </div>  
+
+                 <div class="form-group">
+                  <label class="sr-only" for="email">Email</label>
+                  <span class="input-error"><?php echo $emailError; ?></span>
+                  <input type="text" name="email" placeholder="Correo Electrónico" class="form-control">
+                </div>
 
                   <div class="form-group">
                     <label class="sr-only" for="password">Contraseña</label>
                     <span class="input-error"><?php echo $passwordError; ?></span>
-                    <input type="password" name="password" placeholder="Contraseña" class="form-last-name form-control form-control-in" required>
+                    <input type="password" name="password" placeholder="Contraseña" class=" form-control" required>
                   </div>
                   
                   <div class="form-group">
                     <label class="sr-only" for="repassword">Repetir Contraseña</label>
-                    <input type="password" name="repassword" placeholder="Repetir Contraseña" class="form-email form-control form-control-in">
+                    <input type="password" name="repassword" placeholder="Repetir Contraseña" class=" form-control ">
                   </div>
 
-                <div class="form-group">
-                  <label class="sr-only" for="email">Email</label>
-                  <span class="input-error"><?php echo $emailError; ?></span>
-                  <input type="text" name="email" placeholder="E-mail" class="form-email form-control">
-                </div>
+                  <div class="form-group">
+                    <label class="col-lg-3 control-label" id="captchaOperation"></label>
+                    <div class="col-lg-2">
+                      <input type="text" class="form-control" name="captcha" />
+                    </div>
+                   </div>
+                
 
-                <button type="submit" class="btn" name="new">Registrame</button>
+                <button type="submit" class="btn" name="new" value="Sign up">Registrame</button>
                 <hr>
                 <h5 style="color:white;">Si ya tienes una cuenta, haz click <a href="login.php">aquí</a></h5>
+                -->
             </form>
           </div>
           </div>
@@ -274,7 +333,7 @@
               </div>
               </div>
               <div class="form-bottom">
-            <form role="form" action="" method="post" class="registration-form data-toggle="validator">
+            <form role="form" action="" method="post" class="registration-form" data-toggle="validator">
               <div class="form-group">
                 <label class="sr-only control-label" for="contact-name">Nombre</label>
                   <input type="text" name="contact-name" placeholder="Nombre" class="form-first-name form-control form-contact-in" id="contact-name" required>
@@ -304,4 +363,4 @@
 <footer class="credits" class="container-fluid">
   <p class="author text-center">Crafted with &hearts; in Venezuela by <a href="#">Fortunato</a></p>
 </footer>
-<?php include ('footer.php'); ?>
+<?php include ('includes/footer.php'); ?>

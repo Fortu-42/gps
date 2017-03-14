@@ -7,12 +7,14 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>TecnoBus GPS</title>
 
-<!--<link rel="stylesheet" href="css/style1.css">-->
+    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-    <!--<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="css/form-elements.css">
-    <link rel="stylesheet" href="css/style-form.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+   <!-- <link rel="stylesheet" href="css/form-elements.css">-->
+    <link rel="stylesheet" href="css/bootstrapValidator.min.css"/>
+   <!-- <link rel="stylesheet" href="css/style-form.css">-->
     <!-- Bootstrap -->
 
 
