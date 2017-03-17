@@ -63,43 +63,39 @@
   include('includes/header.php');
 ?>
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-            <div class="page-header">
-                <h2>Using Ajax to submit data</h2>
-            </div>
-
-            <form id="defaultForm" method="post" class="form-horizontal" action="ajaxSubmit.php">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Username</label>
-                    <div class="col-lg-5">
-                        <input type="text" class="form-control" name="username" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Email address</label>
-                    <div class="col-lg-5">
-                        <input type="text" class="form-control" name="email" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Password</label>
-                    <div class="col-lg-5">
-                        <input type="password" class="form-control" name="password" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-lg-9 col-lg-offset-3">
-                        <button type="submit" class="btn btn-primary">Sign up</button>
-                    </div>
-                </div>
-            </form>
+<form id="contactForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-3 control-label">Full name</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="fullName" />
         </div>
     </div>
-</div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Email</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="email" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Title</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="title" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Content</label>
+        <div class="col-md-6">
+            <textarea class="form-control" name="content" rows="5"></textarea>
+        </div>
+    </div>
+  
+    
+        <div class="col-md-9 col-md-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
 
-<?php include ('includes/footer.php'); ?>
+  </body>
+</html>
+<?php  include ('includes/footer.php'); ?>

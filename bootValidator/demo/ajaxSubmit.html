@@ -72,10 +72,13 @@ $(document).ready(function() {
                             max: 30,
                             message: 'The username must be more than 6 and less than 30 characters long'
                         },
-                        /*remote: {
+                         remote: {
+                            type: 'POST',
                             url: 'remote.php',
-                            message: 'The username is not available'
-                        },*/
+                            message: 'El nombre de usuario no está disponible',
+                            delay: 2000
+                        
+                        },
                         regexp: {
                             regexp: /^[a-zA-Z0-9_\.]+$/,
                             message: 'The username can only consist of alphabetical, number, dot and underscore'

@@ -20,15 +20,15 @@ session_start();
 
       include ('includes/connection.php');
 
-      $query = "SELECT name, password FROM user WHERE username='$formUsername'";
+      $query = "SELECT nombre, contrasena FROM usuario WHERE nombreUsuario='$formUsername'";
 
       $result = mysqli_query($conn, $query);
 
       if(mysqli_num_rows($result) > 0){
 
         while($row = mysqli_fetch_assoc($result)){
-          $username   = $row['name'];
-          $hashedPass = $row['password'];
+          $username   = $row['nombre'];
+          $hashedPass = $row['contrasena'];
         }
 
         if( password_verify( $formPass, $hashedPass ) ) {
@@ -72,7 +72,7 @@ include('includes/header.php');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand active" href="index1.php"><i class="fa fa-bus"></i> TecnoBus GPS</a>
+          <a class="navbar-brand active" href="index.php"><i class="fa fa-bus"></i> TecnoBus GPS</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
 
@@ -124,6 +124,7 @@ include('includes/header.php');
             <form role="form" action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" class="registration-form">
               <div class="form-group">
                 <label class="sr-only" for="form-user">Usuario o Email</label>
+                <span><?php echo $loginError  ?></span>
                   <input type="text" name="form-user" placeholder="Usuario" class="form-first-name form-control ">
                 </div>
 

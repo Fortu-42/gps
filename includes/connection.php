@@ -3,7 +3,7 @@
 $sever ="localhost";
 $username= "root";
 $password="root";
-$db="gps";
+$db="tecnobus";
 
 $conn = mysqli_connect($server, $username, $password, $db);
 
