@@ -113,7 +113,7 @@ include('includes/header.php');
 
             <div class="form-top">
               <div class="form-top-left">
-                <h2 class="login-title">Regístrate Aquí</h2>
+                <h2 class="login-title">Inicia Sesión</h2>
                   <p class="login-lead">Empieza a gestionar tus viajes ahora:</p>
               </div>
               <div class="form-top-right">

@@ -7,12 +7,14 @@
 <title>TecnoBus GPS - Dashboard</title>
 
 
-<script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
+
 <link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
-<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
-<link type="text/css" href="css/bootstrap-table.css" rel="stylesheet">
-<link type="text/css" href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+<!--<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"> descomentar en caso de que "bootstrap dataTable" no funcione--> 
 <link type="text/css" href="css/style1.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
+<link rel="stylesheet" href="css/style-form.css">
+<link rel="stylesheet" href="css/form-elements.css">
 
 <!--Icons-->
 

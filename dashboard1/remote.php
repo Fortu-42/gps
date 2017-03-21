@@ -13,22 +13,14 @@ $formEmail = $_POST['email'];
 
       $result = mysqli_query($conn, $query);
 
-      if(mysqli_num_rows($result) > 0){
+      if((mysqli_num_rows($result) > 0 )){
 
-           
-        $row = mysqli_fetch_assoc($result);
-
-        if($row['correo'] == $formEmail || $row['nombreUsuario'] == $formUsername){
-
-           $isAvailable = true;
-
-        }else{
-
+  
 
         $isAvailable = false;
       
         }
-      }
+      
 
 
 echo json_encode(array('valid' => $isAvailable));

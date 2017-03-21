@@ -11,6 +11,11 @@
     
     <script>   
      $(document).ready(function() {
+
+
+
+
+
     $('#contactForm').bootstrapValidator({
         container: '#messages',
         feedbackIcons: {
