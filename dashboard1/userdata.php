@@ -15,7 +15,7 @@ $result = mysqli_query( $conn, $query );  //cambiar si no funciona, poner los pa
 while($row= mysqli_fetch_assoc($result)){  
 
   
-    $editar = '<a class="btn btn-primary" onclick=javascript:modUser('.$row['nombre'].','.$row['nombreUsuario'].','.$row['correo'].') ><i class="fa fa-edit"></i></a>';
+    $editar = '<a class="btn btn-primary" data-toggle="modal" onclick="javascript:modUser(\''.$row['id'].'\',\''.$row['nombre'].'\',\''.$row['nombreUsuario'].'\',\''.$row['correo'].'\'); return false;" data-target="#mod_user"><i class="fa fa-edit"></i></a>';
    $eliminar = '<a  class="btn btn-danger "  data-toggle="modal" onclick=javascript:delUser('.$row['id'].');return false;  data-target="#confirm"  data-toggle="tooltip"><i class="fa fa-remove"></i></a>';
 
 

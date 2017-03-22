@@ -10,7 +10,7 @@ if( isset($_POST['confirm-delete']) ) {
     
     $uid = $_POST['uid'];
     // new database query & result
-    $query = "DELETE FROM usuario WHERE id='$uid'";
+    $query = "DELETE FROM unidades WHERE id='$uid'";
     $result = mysqli_query( $conn, $query );
     
     if( $result ) {
@@ -18,7 +18,7 @@ if( isset($_POST['confirm-delete']) ) {
         // redirect to client page with query string
          
   
-        header( "Location: usuarios.php" );
+        header( "Location: unidades.php" );
 
     } else {
         echo "Error updating record: " . mysqli_error($conn);

@@ -1,12 +1,14 @@
-
 <?php
 
- include('includes/header.php');
+
+
       $confirm2 = " <button type='submit' class='btn btn-danger btn-sm' name='update'>Actualizar</button>";
-      
+
     $confirm = " <button type='submit' class='btn btn-danger btn-sm' name='confirm-delete'>Eliminar</button>";
                         
    $cancel =  "  <button class='btn btn-default btn-sm' data-dismiss='modal'>Cancelar</button>";
+
+    include('includes/header.php');
 ?>
 <header>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -57,20 +59,22 @@
 </header>
 
 <div class="col-md-8 col-md-offset-2" style="margin-top:100px;">
-    <h1>Usuarios
-        <!--<a href="registrousuario.php" class="btn btn-primary pull-right menu"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Nuevo usuario</a>-->
+    <h1>Unidades
+        <a class="btn btn-primary pull-right menu"  data-toggle="modal" data-target="#crear"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Nueva Unidad</a>
     </h1>  
 </div>
+
+
 <div class="col-md-8 col-md-offset-2">  
 
-    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <table id="unidades" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
         <tr>
             <th>Id</th>
-            <th>Nombre</th>
-            <th>Nombre de Usuario</th>
-            <th>Correo</th>          
-            <th>Opción</th>     
+            <th>Cantidad de Puestos</th>
+            <th>Dirección Ip</th>
+            <th>Identificación</th>
+            <th>Opción</th>
         </tr>
         </thead>
         <tbody>
@@ -79,61 +83,52 @@
         <tfoot>
         <tr>
             <th>Id</th>
-            <th>Nombre</th>
-            <th>Nombre de Usuario</th>
-            <th>Correo</th>
-            <th>Opción</th>            
+            <th>Cantidad de Puestos</th>
+            <th>Dirección Ip</th>
+            <th>Identificación</th>
+            <th>Opción</th>
         </tr>
         </tfoot>
     </table>        
 
 </div>
 
-<div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
- <form action='eliminarUsuario.php' method='post'>
+<!-- modal eliminar unidad -->
+
+<div class="modal fade" id="delUnd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+ <form action='eliminarUnidad.php' method='post'>
     <div class="modal-dialog modal-lg" role="document">
 
       <div class="modal-content">
 
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title text-center" id="myModalLabel">Eliminar usuario ID: <span name="uid" id="uid"></span>  </h4>
-        </div>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title text-center" id="myModalLabel">Eliminar unidad ID: <span name="uid" id="uid"></span>  </h4>
+          </div>
 
-
-  
-      <div class="modal-body">
-     
-
-          <h1><p>Seguro desea borrar?</p></h1>
-          <input name="uid" value="" type="hidden">
+          <div class="modal-body">
+            <h1><p>Seguro desea borrar?</p></h1>
+            <input name="uid" value="" type="hidden">
           </div>
             
-
-
-            
-          
-
-      
           <div class="modal-footer">
-            
-              <?php echo $confirm; ?>
-              <?php echo $cancel; ?>
-            
+            <?php echo $confirm; ?>
+            <?php echo $cancel; ?>
           </div>
          
 
-    </div>
-     </form>
-</div>
-
-</div>
-
+      </div><!-- modal content -->
+    </div>  <!-- modal dialog -->
+  </form> <!-- end form -->
+</div> <!-- div modal -->
 
 
 
-<div class="modal fade" id="mod_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <form action='modificarUsuario.php' method='post'>
+
+<!-- Modal modificar unidad  -->
+
+<div class="modal fade" id="modUnd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <form action='modificarUnidad.php' method='post'>
     <div class="modal-dialog modal-lg" role="document">
 
       <div class="modal-content">
@@ -144,45 +139,39 @@
         </div>
 
       <div class="modal-body">
-      
-
-
          
    <div class="form-box">
 
-          <div class="form-top">
+      <div class="form-top">
 
             <div class="form-top-left">
-              <h3>Regístrate Aquí</h3>
-              <p>Empieza a gestionar tus viajes ahora:</p>
+              <h3>Modificar Unidades</h3>
+              <p>Modifica la información de la unidades aquí</p>
             </div>
 
             <div class="form-top-right">
                 <i class="fa fa-bus"></i>
             </div>
-
           </div>
 
           <div class="form-bottom">
 
-        
-
                 <div class="form-group">
                   <div class="col-xs-12">
                    <input type="hidden" class="form-control" name="uid"/>
-                    <input type="text" class="form-control" name="nombre"  placeholder="Nombre y Apellido"/>
+                    <input type="text" class="form-control" name="cantPuestos"  placeholder="Cantidad de Puestos"/>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <div class="col-xs-12">
-                      <input type="text" class="form-control" name="usuario"  placeholder="Nombre de Usuario"/>
+                      <input type="text" class="form-control" name="ipDispGPS"  placeholder="IP del dispositivo GPS"/>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <div class="col-xs-12">
-                    <input type="text" class="form-control" name="correo"  placeholder="E-mail" />
+                    <input type="text" class="form-control" name="identificacion"  placeholder="Identificación" />
                   </div>
                 </div>
 
@@ -220,13 +209,96 @@
 </div>
 
 
+<!-- Modal Crear Unidad -->
+
+
+<div class="modal fade" id="crear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <form action='crearUnidad.php' method='post'>
+    <div class="modal-dialog modal-lg" role="document">
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title text-center" id="myModalLabel">Ingresar Unidad </h4>
+        </div>
+
+      <div class="modal-body">
+      
+
+
+         
+   <div class="form-box">
+
+          <div class="form-top">
+
+            <div class="form-top-left">
+              <h3>Ingresar Unidad</h3>
+              <p>Ingrese la información de la unidades aquí</p>
+            </div>
+
+            <div class="form-top-right">
+                <i class="fa fa-bus"></i>
+            </div>
+
+          </div>
+
+          <div class="form-bottom">
+
+        
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+              
+                    <input type="text" class="form-control" name="cantPuestos"  placeholder="Cantidad de Puestos"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                      <input type="text" class="form-control" name="ipDispGPS"  placeholder="IP del dispositivo GPS"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <input type="text" class="form-control" name="identificacion"  placeholder="Identificación" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <div class="errorM" id="messages"></div>
+                  </div>
+                </div>
+
+    
+            
 
 
 
+          </div>
+
+       </div>
+        
+
+   </div>
 
 
 
+      
+          <div class="modal-footer">
+            
+            <button type='submit' class='btn btn-danger btn-sm' name='create'>Ingresar</button>
+            <button class='btn btn-default btn-sm' data-dismiss='modal'>Cancelar</button>
+              <?php echo $cancel; ?>
+            
+          </div>
+        
 
+    </div>
+      </form>
+</div>
 
 
 <?php include('includes/footer.php'); ?>
@@ -237,17 +309,17 @@ $(document).ready(function () {
   
     $('[data-toggle="tooltip"]').tooltip(); 
 
-    var dataTable = $('#example').DataTable( {		
+    var dataTable = $('#unidades').DataTable( {		
 		  "ajax": {
         "type": "POST",
-			  "url": "userdata.php",
+			  "url": "undData.php",
         dataSrc: ''
 		  },					
 		"columns": [
-			{  data: "id" },
-			{  data: "nombre" },
-			{  data: "nombreUsuario" },
-			{  data: "correo" },
+			{  data: "idUnidad" },
+			{  data: "cantPuestos" },
+			{  data: "ipDispGPS" },
+      {  data: "identificacion" },
       {  data: "opt" }
 			]
 	});

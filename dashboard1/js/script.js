@@ -3,21 +3,53 @@ $('#paradas1').val('');
 
 function delUser(asd) {
 
-    $("span#uid").html(asd);
+    $("#confirm span#uid").html(asd);
     $("#confirm input[name=uid]").val(asd);
     return false;
 
 }
 
-function modUser(nombre, usuario, correo) {
+function modUser(uid, nombre, usuario, correo) {
 
-    $("input#nombre").html(nombre);
 
-    $("input#usuario").html(usuario);
+    $("#mod_user span#uid").html(uid);
 
-    $("input#correo").html(correo);
+    $("#mod_user input[name=uid]").val(uid);
+
+    $("#mod_user input[name=nombre]").val(nombre);
+
+    $("#mod_user input[name=usuario]").val(usuario);
+
+    $("#mod_user input[name=correo]").val(correo);
+    return false;
+}
+
+
+function delUnd(asd) {
+    $('#delUnd span#uid').html(asd);
+    return false;
+}
+
+
+function modUnd(uid, cantPuestos, ipDispGPS, identificacion) {
+
+    $("#mod_und span#uid").html(uid);
+
+    $("#mod_und input[name=uid]").val(uid);
+
+    $("#mod_und input[name=cantPuestos]").val(cantPuestos);
+
+    $("#mod_und input[name=ipDispGPS]").val(ipDispGPS);
+
+    $("#mod_und input[name=identificacion]").val(identificacion);
+    return false;
 
 }
+
+
+
+
+
 
 $('#paradas').on('input', function() {
     var v = this.value;

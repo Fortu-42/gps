@@ -179,7 +179,7 @@ if( isset($_POST['update']) ) {
     
     // set variables
     $nombre     =  $_POST["nombre"] ;
-    $usuario    = $_POST["nombreUsuario"] ;
+    $usuario    = $_POST["usuario"] ;
     $correo    =  $_POST["correo"] ;
     $uid =    $_POST["uid"];
     
