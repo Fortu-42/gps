@@ -27,21 +27,22 @@ function modUser(uid, nombre, usuario, correo) {
 
 function delUnd(asd) {
     $('#delUnd span#uid').html(asd);
+    $('#delUnd input[name=uid]').val(asd);
     return false;
 }
 
 
 function modUnd(uid, cantPuestos, ipDispGPS, identificacion) {
 
-    $("#mod_und span#uid").html(uid);
+    $("#modUnd span#uid").html(uid);
 
-    $("#mod_und input[name=uid]").val(uid);
+    $("#modUnd input[name=uid]").val(uid);
 
-    $("#mod_und input[name=cantPuestos]").val(cantPuestos);
+    $("#modUnd input[name=cantPuestos]").val(cantPuestos);
 
-    $("#mod_und input[name=ipDispGPS]").val(ipDispGPS);
+    $("#modUnd input[name=ipDispGPS]").val(ipDispGPS);
 
-    $("#mod_und input[name=identificacion]").val(identificacion);
+    $("#modUnd input[name=identificacion]").val(identificacion);
     return false;
 
 }

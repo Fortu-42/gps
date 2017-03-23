@@ -15,7 +15,7 @@ while($row= mysqli_fetch_assoc($result)){
 
   
     $editar = '<a class="btn btn-primary" data-toggle="modal" onclick="javascript:modUnd(\''.$row['idUnidad'].'\',\''.$row['cantPuestos'].'\',\''.$row['ipDispGPS'].'\',\''.$row['identificacion'].'\'); return false;" data-target="#modUnd"><i class="fa fa-edit"></i></a>';
-   $eliminar = '<a  class="btn btn-danger "  data-toggle="modal" onclick=javascript:delUnd('.$row['idUnidad'].');return false;  data-target="#delUnd"  data-toggle="tooltip"><i class="fa fa-remove"></i></a>';
+   $eliminar = '<a class="btn btn-danger "  data-toggle="modal" onclick=javascript:delUnd('.$row['idUnidad'].');return false;  data-target="#delUnd"  data-toggle="tooltip"><i class="fa fa-remove"></i></a>';
 
        $arr = array(
         "idUnidad"       => $row['idUnidad'] ,

@@ -10,7 +10,7 @@ if( isset($_POST['confirm-delete']) ) {
     
     $uid = $_POST['uid'];
     // new database query & result
-    $query = "DELETE FROM unidades WHERE id='$uid'";
+    $query = "DELETE FROM unidades WHERE idUnidad='$uid'";
     $result = mysqli_query( $conn, $query );
     
     if( $result ) {

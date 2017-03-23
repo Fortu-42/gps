@@ -23,7 +23,7 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="#"><i class="fa fa-bus fa-2" aria-hidden="true"></i> TecnoBus GPS</a>
+      <a class="navbar-brand" href="index.php"><i class="fa fa-bus fa-2" aria-hidden="true"></i> TecnoBus GPS</a>
 
     </div>
 
@@ -40,8 +40,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog" aria-hidden="true"></i>Menú<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Gestionar Usuario</a></li>
-            <li><a href="#"><i class="fa fa-bus" aria-hidden="true"></i> Gestionar unidades </a></li>
+            <li><a href="usuarios.php"><i class="fa fa-user" aria-hidden="true"></i> Gestionar Usuario</a></li>
+            <li><a href="unidades.php"><i class="fa fa-bus" aria-hidden="true"></i> Gestionar unidades </a></li>
             <li><a href="#"><i class="fa fa-street-view" aria-hidden="true"></i> Gestionar Paradas </a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión </a></li>

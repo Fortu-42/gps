@@ -1,18 +1,45 @@
-<?php
+<?php 
+include('includes/connection.php');
+ $uid = $_GET['uid'];
+
+// query the database with client ID
+$query = "SELECT * FROM unidades WHERE idUnidad=$uid";
+$result = mysqli_query( $conn, $query );
+
+// if result is returned
+if( mysqli_num_rows($result) > 0 ) {
+    
+    // we have data!
+    // set some variables
+     $row = mysqli_fetch_assoc($result);
+
+
+        $cantPuestos         = $row['cantPuestos'];
+        $ipDispGPS          = $row['ipDispGPS'];
+        $identificacion     = $row['identificacion'];
+
+
+
+} else { // no results returned
+    $alertMessage = "<div class='alert alert-warning'>Nothing to see here. <a href='clients.php'>Head back</a>.</div>";
+}
+
 
 // if update button was submitted
 if( isset($_POST['update']) ) {
     
     // set variables
-    $cantPuestos     =   $_POST["cantPuestos"] ;
-    $ipDispGPS       =   $_POST["ipDispGPS"] ;
-    $uid             =   $_POST["uid"];
+    $cantPuestos        = $_POST['cantPuestos'];
+    $ipDispGPS          = $_POST['ipDispGPS'];
+    $identificacion     = $_POST['identificacion'];
+    $uid                = $_POST["uid"];
     
     // new database query & result
     $query = "UPDATE unidades
             SET cantPuestos='$cantPuestos',
             ipDispGPS ='$ipDispGPS',
-            WHERE id= $uid ";
+            identificacion='$identificacion'
+            WHERE idUnidad= $uid ";
     
     $result = mysqli_query( $conn, $query );
     
@@ -35,4 +62,4 @@ mysqli_close($conn);
 
 
 <?include ('includes/footer.php');
-?>      
+?>

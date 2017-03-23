@@ -2,9 +2,6 @@
 // connect to database
 include('includes/connection.php');
 
-// include functions file
-include('includes/functions.php');
-
 // if add button was submitted
 if( isset( $_POST['create'] ) ) {
     
