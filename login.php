@@ -20,7 +20,7 @@ session_start();
 
       include ('includes/connection.php');
 
-      $query = "SELECT nombre, contrasena FROM usuario WHERE nombreUsuario='$formUsername'";
+      $query = "SELECT nombre, contrasena, id FROM usuario WHERE nombreUsuario='$formUsername'";
 
       $result = mysqli_query($conn, $query);
 
@@ -36,6 +36,7 @@ session_start();
             // correct login details!
             // store data in SESSION variables
             $_SESSION['loggedInUser'] = $username;
+            $_SESSION['userId'] = $id;
 
             // redirect user to clients page
             header( "Location: dashboard1/index.php" );
@@ -100,12 +101,7 @@ include('includes/header.php');
 
         <div class="row">
 
-          <!-- Main tittle -->
-
-
-
-
-<!-- Sign up form -->
+      
 
     <!--  <div class="col-md-5">-->
 <div class="col-md-4 col-md-offset-4">

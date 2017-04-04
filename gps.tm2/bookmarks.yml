@@ -1,0 +1,24 @@
+- place_name: Juan Antonio Sotillo, Anzoátegui, Venezuela
+  zoom: 12
+  center: 
+    - 10.1735
+    - -64.6099
+  tags: 
+    - userbookmark
+  index: 0
+- place_name: Simón Bolívar, Anzoátegui, Venezuela
+  zoom: 13
+  center: 
+    - 10.182737534575365
+    - -64.65574264526367
+  tags: 
+    - userbookmark
+  index: 1
+- place_name: Simón Bolívar, Anzoátegui, Venezuela
+  zoom: 14
+  center: 
+    - 10.157857569680209
+    - -64.6739387512207
+  tags: 
+    - userbookmark
+  index: 2

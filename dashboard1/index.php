@@ -1,14 +1,16 @@
 <?php
-session_start();
+/*session_start();
 
 if( !$_SESSION['loggedInUser'] ) {
 
     // send them to the login page
     header("Location: ../login.php");
-} 
+} */
 
 include('includes/header.php');
 
+
+ include('includes/connection.php');
 
  ?>
 
@@ -94,9 +96,9 @@ Menú<span class="caret"></span></a>
 
 </section>
 
-<div id="map1" style="height:500px;"></div>
+<div id="map1" style="height:700px;"></div>
 
-<!-- Inicio modal Terminal de Barcelona -->
+<!-- Inicio modal Paradas -->
 
 <div class="modal fade bs-example-modal-lg" id="Parada1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
@@ -153,30 +155,239 @@ Menú<span class="caret"></span></a>
 </div>
 
 
+<!-- Modal para planear viajes -->
+
+<div class="modal fade bs-example-modal-lg" id="planTrip" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+
+
+        <div class="form-box">
+
+          <div class="form-top">
+
+            <div class="form-top-left">
+              <h3>Regístrate Aquí</h3>
+              <p>Empieza a gestionar tus viajes ahora:</p>
+            </div>
+
+            <div class="form-top-right">
+                <i class="fa fa-bus"></i>
+            </div>
+
+          </div>
+
+          <div class="form-bottom">
+
+            <form id="contactForm" method="post" class="form-horizontal" role="form" action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>">
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <input type="text" class="form-control" name="fullName"  placeholder="Nombre y Apellido"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                      <input type="text" class="form-control" name="username"  placeholder="Nombre de Usuario"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <input type="text" class="form-control" name="email"  placeholder="E-mail" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <input type="password" class="form-control" name="password"  placeholder="Contraseña" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <input type="password" class="form-control" name="repassword" placeholder="Repetir Contraseña"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <div class="errorM" id="messages"></div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <button type="submit" class="btn btn-default" name="new">Registrarse</button>
+                  </div>
+                </div>
+
+            </form>
+            
+          </div>
+
+              
+        </div>
+          
+      </div>
+
+          <div class="row">
+            <div class="col-xs-6" id="imgParadaC">
+              <img  alt="foto-de-parada" class="img-responsive" id="imgParada">
+            </div>
+            <div class="col-xs-6" id="imgMapParadaC">
+              <img  alt="foto-terminal-mapa" class="img-responsive" id="imgMapParada">
+            </div>
+          </div>
+
+          
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Planear Viaje en Esta Parada</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 <? 
     include('includes/footer.php');
 
 ?>
-<script type="text/javascript" charset="utf8" src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.5.0.js"></script>
-<script>
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.7.0.js"></script>
+<script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
+<script type="text/javascript">
 
   var pubnub = new PubNub({
   publishKey: 'pub-c-ffef9f39-c598-4bfa-a4aa-65874150cd42',
-  subscribeKey: 'sub-c-a3e9dcca-eafc-11e6-889b-02ee2ddab7fe'
+  subscribeKey: 'sub-c-a3e9dcca-eafc-11e6-889b-02ee2ddab7fe',
+  ssl: true
 });
 
-var channel = 'BTR';
 
-        eon.map({
+ function getNonZeroRandomNumber() {
+      var random = Math.floor(Math.random() * 199) - 99;
+      if (random === 0) return getNonZeroRandomNumber();
+      return random;
+  }
+ 
+
+ var channel = 'BTR';
+
+    eon.map({
+      ssl: true,
       pubnub: pubnub,
       id: 'map1',
-      mbToken: 'pk.eyJ1IjoiZm9ydHVuYXRvaGVycmVyYSIsImEiOiJjaXlyazYwbXcwMDF3MndzNGVzYTU3bDU5In0.qHIS7XYrfatU8ImS4XiEjA',
+      mbToken: 'pk.eyJ1IjoiZm9ydHVuYXRvaGVycmVyYSIsImEiOiJjaXpkMGhqbXQwaXd1MzJvZXRuMWZob3k3In0.062NwRpCxTr4xvTNNuvbsg',
       mbId: 'fortunatoherrera.117c4521',
       channels: [channel],
         });
 
-   
 
+/*var points = [
+  {"latlng": [10.133553, -64.678958]},
+  {"latlng": [10.130128, -64.670508]},
+  {"latlng": [10.133699, -64.679803]},
+  {"latlng": [10.154759, -64.682624]},
+  {"latlng": [10.178221, -64.681173]},
+  {"latlng": [10.18168, -64.664518]}
+];
+
+var count = -1;
+
+
+  setInterval(function() {
+
+ count = count +1;
+ if(count >= points.length) count = 0;
+ console.log("publicando..", points[count]);
+ pubnub.publish({
+    channel: 'BTR',
+    message : [points[count]]
+ });
+
+  }, 5000);
+
+ var  m = '';
+
+    pubnub.subscribe({
+      withPrecense : true,
+      channel: 'eon-map-geolocation-output',
+   
+  });
+
+  pubnub.publish({
+        channel: 'eon-maps-geolocation-input',
+        message: { foo: "hola"}
+      }, 
+      function (status, response){
+        if(status.error){
+          console.log(status);
+        } else{
+          console.log("messaege Published w/ timetoken", response.timetoken)
+        }
+      }
+  );*/
+
+
+var pos = "";
+
+        pubnub.addListener({
+            status: function(statusEvent) {
+                if (statusEvent.category === "PNConnectedCategory") {
+                  setInterval(function(){
+                    pubnub.publish(
+                        { 
+                            message: {foo : "hola"},
+                            channel : 'eon-maps-geolocation-input'
+                        }, 
+                        function (status, response) {
+                            if(status.error){
+                              console.log(status);
+                            } else{
+                              console.log("message Published w/ timetoken", response.timetoken)
+                            }
+                        }
+                    ); }, 5000);
+                }
+            },
+            message: function(message) {
+               var pos = message.message.latlng;
+               pubnub.publish({
+                 channel : 'BTR',
+                 message: [{"latlng": pos}
+                 ]
+               });
+                
+            },
+            presence: function(presenceEvent) {
+                // handle presence
+                alert("hola usuario");
+            }
+        });
+        
+        pubnub.subscribe({
+            channels: ['eon-map-geolocation-output']
+        });
+
+
+
+
+
+
+
+ 
+     
 
 
 </script>

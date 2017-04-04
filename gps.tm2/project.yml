@@ -1,0 +1,30 @@
+_prefs: 
+  mapid: fortunatoherrera.1e98df8e
+  saveCenter: true
+_properties: 
+  bridge: 
+    "group-by": layer
+attribution: "<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>"
+bounds: 
+  - -180
+  - -85.0511
+  - 180
+  - 85.0511
+center: 
+  - -64.8386
+  - 10.1872
+  - 10
+description: ''
+format: "png8:m=h"
+interactivity_layer: ''
+layers: null
+maxzoom: 22
+minzoom: 0
+name: OSM Bright 2
+source: "mapbox:///mapbox.mapbox-streets-v5,fortunatoherrera.cizr4bp8r01l633o4soemw2za-9fe6m"
+styles: 
+  - style.mss
+  - road.mss
+  - labels.mss
+  - btr.mss
+template: ''
