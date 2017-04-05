@@ -96,7 +96,7 @@ Menú<span class="caret"></span></a>
 
 </section>
 
-<div id="map1" style="height:700px;"></div>
+<div id="map" style="height:500px;"></div>
 
 <!-- Inicio modal Paradas -->
 
@@ -264,7 +264,7 @@ Menú<span class="caret"></span></a>
     include('includes/footer.php');
 
 ?>
-<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.7.0.js"></script>
+<!--<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.7.0.js"></script>-->
 <script type="text/javascript" src="https://pubnub.github.io/eon/v/eon/1.0.0/eon.js"></script>
 <script type="text/javascript">
 
@@ -275,22 +275,49 @@ Menú<span class="caret"></span></a>
 });
 
 
- function getNonZeroRandomNumber() {
-      var random = Math.floor(Math.random() * 199) - 99;
-      if (random === 0) return getNonZeroRandomNumber();
-      return random;
-  }
+// function getNonZeroRandomNumber() {
+  //    var random = Math.floor(Math.random() * 199) - 99;
+    //  if (random === 0) return getNonZeroRandomNumber();
+      //return random;
+ // }
  
 
  var channel = 'BTR';
 
-    eon.map({
+    var map = eon.map({
       ssl: true,
       pubnub: pubnub,
-      id: 'map1',
+      id: 'map',
       mbToken: 'pk.eyJ1IjoiZm9ydHVuYXRvaGVycmVyYSIsImEiOiJjaXpkMGhqbXQwaXd1MzJvZXRuMWZob3k3In0.062NwRpCxTr4xvTNNuvbsg',
       mbId: 'fortunatoherrera.117c4521',
       channels: [channel],
+      message: function (data) {
+        if(data.user.latlng){
+          map.setView(data.user.latlng, 14);
+          }
+        },
+      marker: function (latlng, data) {
+
+          var marker = new L.Marker(latlng, {
+            icon: L.icon({
+              iconUrl: 'img/undIcon.png',
+              iconSize: [24, 24]
+            })
+          });
+
+          var popup = '';
+          if(data) {
+            popup = 'Parada: ' + data[0] +' Para el lugar: '+ data[1];
+          }
+          if(!popup.length) {
+            var popup = 'No data available';
+          }
+
+          marker.bindPopup(popup);
+
+          return marker;
+        }
+
         });
 
 
@@ -340,10 +367,12 @@ var count = -1;
   );*/
 
 
-var pos = "";
+var pos = '';
+
+
 
         pubnub.addListener({
-            status: function(statusEvent) {
+            /*status: function(statusEvent) {
                 if (statusEvent.category === "PNConnectedCategory") {
                   setInterval(function(){
                     pubnub.publish(
@@ -360,34 +389,48 @@ var pos = "";
                         }
                     ); }, 5000);
                 }
-            },
+            },*/
             message: function(message) {
-               var pos = message.message.latlng;
+              console.log(JSON.stringify(message));
+              if(message.channel === 'eon-map-geolocation-output'){
+              pos = message.message.latlng;
+              console.log(pos);
                pubnub.publish({
                  channel : 'BTR',
-                 message: [{"latlng": pos}
-                 ]
-               });
+                 message: {
+                    user:{
+                        "latlng": pos,
+                        "data":  [
+                        "calle bolívar",
+                        "21:03pm"
+                        ]
+                      }
+                 }
+               }); 
+               }
+
                 
             },
             presence: function(presenceEvent) {
                 // handle presence
-                alert("hola usuario");
+              
             }
         });
+
+            pubnub.subscribe({
+            channels: ['eon-map-geolocation-output', 'viajes']
+            });
+            
         
-        pubnub.subscribe({
-            channels: ['eon-map-geolocation-output']
-        });
-
-
-
-
-
-
+              pubnub.publish({ 
+              message: {foo : "hola"},
+              channel : 'eon-maps-geolocation-input'
+                         }); 
+              
+        
+       
 
  
-     
 
 
 </script>

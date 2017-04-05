@@ -8,14 +8,15 @@
 
 
 
-<link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
+
 
 <!--<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"> descomentar en caso de que "bootstrap dataTable" no funcione--> 
-<link type="text/css" href="css/style1.css" rel="stylesheet">
+
 <link type="text/css" rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
-<link href='https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
 <link rel="stylesheet" href="css/style-form.css">
 <link rel="stylesheet" href="css/form-elements.css">
+<link type="text/css" rel="stylesheet" href="https://pubnub.github.io/eon/v/eon/1.0.0/eon.css"/>
+<link type="text/css" href="css/style1.css" rel="stylesheet">
 
 <!--Icons-->
 
