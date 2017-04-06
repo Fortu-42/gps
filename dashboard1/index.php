@@ -292,33 +292,45 @@ Menú<span class="caret"></span></a>
       mbId: 'fortunatoherrera.117c4521',
       channels: [channel],
       message: function (data) {
-        if(data.user.latlng){
+       // console.log(data);
+       if(data.user.latlng){
           map.setView(data.user.latlng, 14);
-          }
+          }// else {
+           // console.log(data);
+         // }
         },
-      marker: function (latlng, data) {
-
-          var marker = new L.Marker(latlng, {
+      marker: function (dir, dat) {
+      
+         if(dir){
+        
+          var marker = new L.Marker(dir, {
             icon: L.icon({
-              iconUrl: 'img/undIcon.png',
+              iconUrl: 'img/user.png',
               iconSize: [24, 24]
             })
           });
 
-          var popup = '';
-          if(data) {
-            popup = 'Parada: ' + data[0] +' Para el lugar: '+ data[1];
+         /* var popup = '';
+          if(data[0]) {
+            popup = 'Usted está en: ' + data[0];
           }
           if(!popup.length) {
-            var popup = 'No data available';
+            var popup = 'Ups!, No hay datos disponibles';
           }
 
-          marker.bindPopup(popup);
+          marker.bindPopup(popup);*/
 
-          return marker;
+          return marker; } 
+          /*else {
+            console.log(info);
+          }*/
         }
 
         });
+
+    
+
+        
 
 
 /*var points = [
@@ -372,13 +384,13 @@ var pos = '';
 
 
         pubnub.addListener({
-            /*status: function(statusEvent) {
+            status: function(statusEvent) {
                 if (statusEvent.category === "PNConnectedCategory") {
-                  setInterval(function(){
+                  
                     pubnub.publish(
                         { 
                             message: {foo : "hola"},
-                            channel : 'eon-maps-geolocation-input'
+                            channel : ['eon-maps-geolocation-input']
                         }, 
                         function (status, response) {
                             if(status.error){
@@ -387,26 +399,64 @@ var pos = '';
                               console.log("message Published w/ timetoken", response.timetoken)
                             }
                         }
-                    ); }, 5000);
+                    ); 
                 }
-            },*/
+            },
             message: function(message) {
-              console.log(JSON.stringify(message));
+              
               if(message.channel === 'eon-map-geolocation-output'){
+              //  console.log(JSON.stringify(message));
               pos = message.message.latlng;
-              console.log(pos);
+              lat = message.message.data.lat;
+              lon = message.message.data.lon;
+             
+              
                pubnub.publish({
-                 channel : 'BTR',
-                 message: {
-                    user:{
-                        "latlng": pos,
-                        "data":  [
-                        "calle bolívar",
-                        "21:03pm"
-                        ]
-                      }
-                 }
-               }); 
+                 channel : 'placeslatlng',
+                 message:     
+                 { 
+                  "query" : [lon, lat]
+                  }
+                 
+               });
+               var address = ''; 
+                pubnub.addListener({
+                  message: function(m){
+                 //    console.log(m);
+                      if(m.channel === 'placeslatlng'){
+                      //  console.log(m.message.geocode.features[0].properties.address);
+                          address = m.message.geocode.features[0].properties.address;
+                          pubnub.publish({
+                            channel: 'BTR',
+                            message: {
+                              user:{
+                                "latlng": pos,
+                                "data": [address]
+                              }
+                            }
+                          }, function (status, response) {
+                            if(status.error){
+                              console.log(status);
+                            } else{
+                              console.log("message Published w/ timetoken", response.timetoken)
+                            }
+                        });
+
+                        
+
+                      
+                      }/*else if(m.channel === 'mapbox-directions') {
+                            console.log(m);
+                            var dir = m.message.directions.routes[0];
+                            pubnub.publish({
+                              channel: 'BTR',
+                              message: { "directions": dir}
+                            });
+
+                      } */
+                  }
+                });
+
                }
 
                 
@@ -417,15 +467,54 @@ var pos = '';
             }
         });
 
+              pubnub.publish({
+                        channel: ['mapbox-directions'],
+                        message: {
+                                  "lat1": 10.133553,
+                                  "lng1": -64.678958,
+                                  "lat2": 10.130128,
+                                  "lng2": -64.670508,
+                                  "lat3": 10.133699,
+                                  "lng3": -64.679803,
+                                  "lat4": 10.154759,
+                                  "lng4": -64.682624,
+                                  "lat5": 10.178221,
+                                  "lng5": -64.681173,
+                                  "lat6": 10.18168,
+                                  "lng6": -64.664518,
+                                  "profile":"mapbox/driving"
+                                  }
+                                    },
+                                    function (status, response) {
+                                        if(status.error){
+                                          console.log(status);
+                                        } else{
+                                          console.log("publicado las direcciones", response.timetoken)
+                                        }
+                        }
+                    );
+
+
+
+pubnub.addListener({
+  
+  message: function(m){
+  if(m.channel === 'mapbox-directions')
+    console.log(m);
+  
+  }
+});
+
+
             pubnub.subscribe({
-            channels: ['eon-map-geolocation-output', 'viajes']
+            channels: ['eon-map-geolocation-output', 'placeslatlng', 'mapbox-directions']
             });
             
         
-              pubnub.publish({ 
-              message: {foo : "hola"},
-              channel : 'eon-maps-geolocation-input'
-                         }); 
+            //  pubnub.publish({ 
+             // message: {foo : "hola"},
+              //channel : 'eon-maps-geolocation-input'
+                //         }); 
               
         
        
