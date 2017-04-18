@@ -1,11 +1,11 @@
 <?php
-/*session_start();
+session_start();
 
 if( !$_SESSION['loggedInUser'] ) {
 
     // send them to the login page
     header("Location: ../login.php");
-} */
+} 
 
 include('includes/header.php');
 
@@ -49,10 +49,10 @@ include('includes/header.php');
 Menú<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="usuarios.php"><i class="fa fa-user" aria-hidden="true"></i> Gestionar Usuario</a></li>
-            <li><a href="#"><i class="fa fa-bus" aria-hidden="true"></i> Gestionar unidades </a></li>
-            <li><a href="#"><i class="fa fa-street-view" aria-hidden="true"></i> Gestionar Paradas </a></li>
+            <li><a href="unidades.php"><i class="fa fa-bus" aria-hidden="true"></i> Gestionar unidades </a></li>
+            <!--<li><a href="#"><i class="fa fa-street-view" aria-hidden="true"></i> Gestionar Paradas </a></li>-->
             <li role="separator" class="divider"></li>
-            <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión </a></li>
+            <li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión </a></li>
           </ul>
         </li>
         
@@ -258,6 +258,80 @@ Menú<span class="caret"></span></a>
 
 
 
+  <form action='crearViaje.php' method='post'>
+
+    <div class="modal-dialog modal-lg" role="document">
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title text-center" id="myModalLabel">Actualizar Unidad ID: <span name="uid" id="uid"></span>  </h4>
+        </div>
+
+        <div class="modal-body">
+         
+          <div class="form-box">
+
+            <div class="form-top">
+
+              <div class="form-top-left">
+                <h3>Modificar Unidades</h3>
+                <p>Modifica la información de la unidades aquí</p>
+              </div>
+
+              <div class="form-top-right">
+                  <i class="fa fa-bus"></i>
+              </div>
+            </div>
+
+            <div class="form-bottom">
+
+              <div class="form-group">
+                <div class="col-xs-12">
+                 <input type="hidden" class="form-control" name="uid"/>
+                 <input type="text" class="form-control" name="cantPuestos"  placeholder="Cantidad de Puestos"/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <input type="text" class="form-control" name="ipDispGPS"  placeholder="IP del dispositivo GPS"/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <input type="text" class="form-control" name="identificacion"  placeholder="Identificación" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <div class="errorM" id="messages"></div>
+                </div>
+              </div>
+              
+          </div>
+
+       </div>
+
+   </div>
+
+   <div class="modal-footer">
+            
+            <button type='submit' class='btn btn-danger btn-sm' name='update'>Actualizar</button>
+             <button class='btn btn-default btn-sm' data-dismiss='modal'>Cancelar</button>
+            
+   </div>
+        
+
+    </div>
+      </form>
+</div>
+</div>
+
+
 
 
 <? 
@@ -292,12 +366,12 @@ Menú<span class="caret"></span></a>
       mbId: 'fortunatoherrera.117c4521',
       channels: [channel],
       message: function (data) {
-       // console.log(data);
-       if(data.user.latlng){
-          map.setView(data.user.latlng, 14);
-          }// else {
-           // console.log(data);
-         // }
+        console.log(data);
+     if(data.user.latlng){
+          map.setView(data.user.latlng, 15);
+          }/* else {
+            console.log(data);
+          }*/
         },
       marker: function (dir, dat) {
       
@@ -310,23 +384,27 @@ Menú<span class="caret"></span></a>
             })
           });
 
-         /* var popup = '';
-          if(data[0]) {
-            popup = 'Usted está en: ' + data[0];
+         var popup = '';
+          if(dat[0]) {
+            popup = 'Usted está en: Av Jorge Rodríguez';
           }
           if(!popup.length) {
             var popup = 'Ups!, No hay datos disponibles';
           }
 
-          marker.bindPopup(popup);*/
+          marker.bindPopup(popup);
 
-          return marker; } 
+          return marker; 
+          
+          } 
           /*else {
             console.log(info);
           }*/
         }
 
-        });
+      });
+      
+  
 
     
 
@@ -382,12 +460,7 @@ var count = -1;
 var pos = '';
 
 
-
-        pubnub.addListener({
-            status: function(statusEvent) {
-                if (statusEvent.category === "PNConnectedCategory") {
-                  
-                    pubnub.publish(
+         pubnub.publish(
                         { 
                             message: {foo : "hola"},
                             channel : ['eon-maps-geolocation-input']
@@ -396,12 +469,13 @@ var pos = '';
                             if(status.error){
                               console.log(status);
                             } else{
-                              console.log("message Published w/ timetoken", response.timetoken)
+                              console.log("input publicado", response.timetoken)
                             }
                         }
                     ); 
-                }
-            },
+
+
+        pubnub.addListener({
             message: function(message) {
               
               if(message.channel === 'eon-map-geolocation-output'){
@@ -419,18 +493,19 @@ var pos = '';
                   }
                  
                });
+
                var address = ''; 
                 pubnub.addListener({
                   message: function(m){
                  //    console.log(m);
                       if(m.channel === 'placeslatlng'){
-                      //  console.log(m.message.geocode.features[0].properties.address);
+                        console.log(m.message.geocode);
                           address = m.message.geocode.features[0].properties.address;
                           pubnub.publish({
                             channel: 'BTR',
                             message: {
                               user:{
-                                "latlng": pos,
+                                "latlng": [10.17983594058255, -64.66457921825409],
                                 "data": [address]
                               }
                             }
@@ -438,38 +513,18 @@ var pos = '';
                             if(status.error){
                               console.log(status);
                             } else{
-                              console.log("message Published w/ timetoken", response.timetoken)
+                              console.log("btr publicado con el valor de la direccion", response.timetoken)
                             }
                         });
 
-                        
 
-                      
-                      }/*else if(m.channel === 'mapbox-directions') {
-                            console.log(m);
-                            var dir = m.message.directions.routes[0];
-                            pubnub.publish({
-                              channel: 'BTR',
-                              message: { "directions": dir}
-                            });
-
-                      } */
-                  }
-                });
-
-               }
-
-                
-            },
-            presence: function(presenceEvent) {
-                // handle presence
-              
-            }
-        });
-
-              pubnub.publish({
+                        pubnub.publish({
                         channel: ['mapbox-directions'],
                         message: {
+                                  user:{
+                                "latlng": pos,
+                                "data": [address]
+                                  },
                                   "lat1": 10.133553,
                                   "lng1": -64.678958,
                                   "lat2": 10.130128,
@@ -494,14 +549,53 @@ var pos = '';
                         }
                     );
 
+                 /*   pubnub.addListener({
+                      message: function(m){
+                        if(channel === 'mapbox-directions'){
+                          console.log(m);
+                          dir = m.message.directions;
+                          pubnub.publish({
+                            channel: 'BTR',
+                            message: {"directions": dir}
+                          }, function (status, response) {
+                            if(status.error){
+                              console.log(status);
+                            } else{
+                              console.log("direcciones publicadas", response.timetoken)
+                            }
+                        });
+                        }
+                      }
+                    });*/
+
+                      
+                  }}
+                });
+
+               }
+
+                
+            },
+            presence: function(presenceEvent) {
+                // handle presence
+              
+            }
+        });
+
+
+
 
 
 pubnub.addListener({
   
   message: function(m){
-  if(m.channel === 'mapbox-directions')
+  if(m.channel === 'mapbox-directions'){
     console.log(m);
-  
+  var dir = m.message.directions.routes;
+    
+  //polyline.setLatLngs(dir);
+
+    }
   }
 });
 

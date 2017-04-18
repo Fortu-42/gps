@@ -40,35 +40,90 @@
 
 
 
-      var channel = 'pubnub-mapbox' + getNonZeroRandomNumber();
+      var channel = 'pubnub-mapbox'
 
-      eon.map({
-        pubnub: pubnub,
-        id: 'map',
-        mbToken: 'pk.eyJ1IjoiZm9ydHVuYXRvaGVycmVyYSIsImEiOiJjaXpkMGhqbXQwaXd1MzJvZXRuMWZob3k3In0.062NwRpCxTr4xvTNNuvbsg',
-        mbId: 'fortunatoherrera.117c4521',
-        channels: [channel],
-        connect: connect,
-        options: {
-          zoomAnimation: false,
-        },
-      });
-      function connect() {
-        var point = {
-          latlng: [37.370375, -97.756138]
-        };
-        setInterval(function(){
-          var new_point = JSON.parse(JSON.stringify(point));
-          new_point.latlng = [
-            new_point.latlng[0] + (getNonZeroRandomNumber() * 0.1),
-            new_point.latlng[1] + (getNonZeroRandomNumber() * 0.2)
-          ];
-          pubnub.publish({
-            channel: channel,
-            message: [new_point]
-          });
-        }, 1000);
-      };
+      var polyline = new L.polyline([], {color:'red', fillColor:'red'});
+
+      var points = [
+  {"latlng": [10.133553, -64.678958]},
+  {"latlng": [10.130128, -64.670508]},
+  {"latlng": [10.133699, -64.679803]},
+  {"latlng": [10.154759, -64.682624]},
+  {"latlng": [10.178221, -64.681173]},
+  {"latlng": [10.18168, -64.664518]}
+];
+
+      var map = eon.map({
+      ssl: true,
+      pubnub: pubnub,
+      id: 'map',
+      mbToken: 'pk.eyJ1IjoiZm9ydHVuYXRvaGVycmVyYSIsImEiOiJjaXpkMGhqbXQwaXd1MzJvZXRuMWZob3k3In0.062NwRpCxTr4xvTNNuvbsg',
+      mbId: 'fortunatoherrera.117c4521',
+      channels: [channel],
+      message: function(m){
+        console.log(m);
+      //  polyline.setLatLngs(data.iss.latlng);
+        
+      }
+        });
+
+
+        
+
+        console.log("hola!");
+        polyline.setLatLngs(points);
+        polyline.addTo(map);
+        console.log("ya pase");
+
+
+
+                pubnub.addListener({
+                    status: function(statusEvent) {
+                        if (statusEvent.category === "PNConnectedCategory") {
+            
+                                   pubnub.publish({
+                        channel: ['pubnub-mapbox'],
+                        message: {
+                                  
+                                  "lat1": 10.133553,
+                                  "lng1": -64.678958,
+                                  "lat2": 10.18168,
+                                  "lng2": -64.664518,
+                                  "profile":"mapbox/driving"
+                                  }
+                                    },
+                                    function (status, response) {
+                                        if(status.error){
+                                          console.log(status);
+                                        } else{
+                                          console.log("publicado las direcciones", response.timetoken)
+                                        }
+                        }
+                    );
+                        }
+                    },
+                    message: function(m) {
+                       if(m.channel === 'mapbox-directions'){
+                      console.log(m);
+                       var dir = m.message.directions.routes;
+                      console.log(dir);
+                   
+    }
+                    },
+                    presence: function(presenceEvent) {
+                        // handle presence
+                    }
+        });
+
+
+ 
+
+
+
+
+            pubnub.subscribe({
+            channels: ['mapbox-directions']
+            });                 
     </script>
   </body>
 </html>

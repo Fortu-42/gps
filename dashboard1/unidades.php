@@ -46,7 +46,7 @@
           <ul class="dropdown-menu">
             <li><a href="usuarios.php"><i class="fa fa-user" aria-hidden="true"></i> Gestionar Usuario</a></li>
             <li><a href="unidades.php"><i class="fa fa-bus" aria-hidden="true"></i> Gestionar unidades </a></li>
-            <li><a href="#"><i class="fa fa-street-view" aria-hidden="true"></i> Gestionar Paradas </a></li>
+         <!--   <li><a href="#"><i class="fa fa-street-view" aria-hidden="true"></i> Gestionar Paradas </a></li>-->
             <li role="separator" class="divider"></li>
             <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión </a></li>
           </ul>
@@ -139,7 +139,7 @@
 
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title text-center" id="myModalLabel">Actualizar usuario ID: <span name="uid" id="uid"></span>  </h4>
+          <h4 class="modal-title text-center" id="myModalLabel">Actualizar Unidad ID: <span name="uid" id="uid"></span>  </h4>
         </div>
 
         <div class="modal-body">

@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="css/form-elements.css">
 
   <link rel="stylesheet" href="css/style.css">
-
   
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css' rel='stylesheet' />
   
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
